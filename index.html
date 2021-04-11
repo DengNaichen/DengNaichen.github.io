@@ -398,7 +398,7 @@
       
         <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ca/album/lure/540614332?i=540614342"></iframe>
 
-<h2 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h2><h2 id="7-Palindrome-Number-2021-04-10"><a href="#7-Palindrome-Number-2021-04-10" class="headerlink" title="7. Palindrome Number (2021 04 10)"></a>7. Palindrome Number (2021 04 10)</h2><p>Problem distribution:<br>Given an integer x, return true if x is palindrome integer.</p>
+<h2 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h2><h3 id="9-Palindrome-Number-2021-04-10"><a href="#9-Palindrome-Number-2021-04-10" class="headerlink" title="9. Palindrome Number (2021 04 10)"></a>9. Palindrome Number (2021 04 10)</h3><p>Problem distribution:<br>Given an integer x, return true if x is palindrome integer.</p>
 <p>An integer is a <strong>palindrome</strong> when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.</p>
 <p><strong>Note</strong> we consider negative integer as well, like reverser -121 is 121- , so -121 will not be palindrome.</p>
 <p>我的解法：</p>
@@ -412,6 +412,55 @@
 <p>可以用整数的反转，但是这样依然不是最快的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, x: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> (x % <span class="number">10</span> == <span class="number">0</span> <span class="keyword">and</span> x != <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    reverse_num = <span class="number">0</span></span><br><span class="line">    x2 = x</span><br><span class="line">    <span class="keyword">while</span> x &gt; <span class="number">0</span>:</span><br><span class="line">        reverse_num = reverse_num * <span class="number">10</span> + x % <span class="number">10</span></span><br><span class="line">        x = x // <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> x2 == reverse_num</span><br></pre></td></tr></table></figure>
 <p>官方的教程里面给的有一个只比较一般，但是我没写出来，先过吧。</p>
+<h3 id="13-Roman-to-Integer"><a href="#13-Roman-to-Integer" class="headerlink" title="13. Roman to Integer"></a>13. Roman to Integer</h3><table>
+<thead>
+<tr>
+<th>Roman</th>
+<th>Integer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+<tr>
+<td>L</td>
+<td>50</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>Example 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;III&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Example 2:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;IV&quot;</span><br><span class="line">Output: 4</span><br><span class="line">Example 3:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;IX&quot;</span><br><span class="line">Output: 9</span><br><span class="line">Example 4:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;LVIII&quot;</span><br><span class="line">Output: 58</span><br><span class="line">Explanation: L &#x3D; 50, V&#x3D; 5, III &#x3D; 3.</span><br><span class="line">Example 5:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;MCMXCIV&quot;</span><br><span class="line">Output: 1994</span><br><span class="line">Explanation: M &#x3D; 1000, CM &#x3D; 900, XC &#x3D; 90 and IV &#x3D; 4.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">romanToInt</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        </span><br><span class="line">        refdic = &#123;<span class="string">&quot;I&quot;</span>: <span class="number">1</span>, <span class="string">&quot;V&quot;</span>: <span class="number">5</span>, <span class="string">&quot;X&quot;</span>: <span class="number">10</span>, <span class="string">&quot;L&quot;</span>: <span class="number">50</span>, <span class="string">&quot;C&quot;</span>: <span class="number">100</span>, <span class="string">&quot;D&quot;</span>: <span class="number">500</span>, <span class="string">&quot;M&quot;</span>: <span class="number">1000</span>&#125;</span><br><span class="line">        </span><br><span class="line">        num = refdic[s[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> refdic[s[i]] &gt; refdic[s[i-<span class="number">1</span>]]:</span><br><span class="line">                num +=  refdic[s[i]] - <span class="number">2</span> *  refdic[s[i-<span class="number">1</span>]]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                num +=  refdic[s[i]]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
+<p>这个解法不咋地，但是不知道有什么更好的解法</p>
 
       
 
