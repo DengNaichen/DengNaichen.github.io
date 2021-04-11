@@ -6,16 +6,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Leetcode with Go</title>
-    <url>/2021/04/10/Leetcode-with-Go/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>Programming</tag>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode with Python</title>
     <url>/2021/04/06/Leetcode-with-Python/</url>
     <content><![CDATA[<p>Leetcode python 刷题记录，日更</p>
@@ -23,7 +13,7 @@
 
 <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ca/album/lure/540614332?i=540614342"></iframe>
 
-<h2 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h2><h3 id="9-Palindrome-Number-2021-04-10"><a href="#9-Palindrome-Number-2021-04-10" class="headerlink" title="9. Palindrome Number (2021 04 10)"></a>9. Palindrome Number (2021 04 10)</h3><p>Problem distribution:<br>Given an integer x, return true if x is palindrome integer.</p>
+<h2 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h2><h3 id="9-Palindrome-Number-2021-04-10"><a href="#9-Palindrome-Number-2021-04-10" class="headerlink" title="9. Palindrome Number (2021 04 10)"></a>9. Palindrome Number (2021 04 10)</h3><p>😘😭👀👻👀😂<br>Problem distribution:<br>Given an integer x, return true if x is palindrome integer.</p>
 <p>An integer is a <strong>palindrome</strong> when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.</p>
 <p><strong>Note</strong> we consider negative integer as well, like reverser -121 is 121- , so -121 will not be palindrome.</p>
 <p>我的解法：</p>
@@ -91,8 +81,18 @@
 ]]></content>
       <tags>
         <tag>Programming</tag>
-        <tag>Leetcode</tag>
         <tag>Python</tag>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode with Go</title>
+    <url>/2021/04/10/Leetcode-with-Go/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>Programming</tag>
+        <tag>Leetcode</tag>
+        <tag>Go</tag>
       </tags>
   </entry>
   <entry>
