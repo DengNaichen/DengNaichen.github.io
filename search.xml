@@ -6,6 +6,16 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>Leetcode with Go</title>
+    <url>/2021/04/10/Leetcode-with-Go/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>Programming</tag>
+        <tag>Go</tag>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode with Python</title>
     <url>/2021/04/06/Leetcode-with-Python/</url>
     <content><![CDATA[<p>Leetcode python 刷题记录，日更</p>
@@ -78,21 +88,18 @@
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">romanToInt</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        </span><br><span class="line">        refdic = &#123;<span class="string">&quot;I&quot;</span>: <span class="number">1</span>, <span class="string">&quot;V&quot;</span>: <span class="number">5</span>, <span class="string">&quot;X&quot;</span>: <span class="number">10</span>, <span class="string">&quot;L&quot;</span>: <span class="number">50</span>, <span class="string">&quot;C&quot;</span>: <span class="number">100</span>, <span class="string">&quot;D&quot;</span>: <span class="number">500</span>, <span class="string">&quot;M&quot;</span>: <span class="number">1000</span>&#125;</span><br><span class="line">        </span><br><span class="line">        num = refdic[s[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> refdic[s[i]] &gt; refdic[s[i-<span class="number">1</span>]]:</span><br><span class="line">                num +=  refdic[s[i]] - <span class="number">2</span> *  refdic[s[i-<span class="number">1</span>]]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                num +=  refdic[s[i]]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
 <p>这个解法不咋地，但是不知道有什么更好的解法</p>
+<h3 id="14-Longest-Common-Prefix-2021-04-11"><a href="#14-Longest-Common-Prefix-2021-04-11" class="headerlink" title="14. Longest Common Prefix (2021 04 11)"></a><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a> (2021 04 11)</h3><p>最暴力的解法，就是遍历第一个的所有字符，然后分别和对应位置的后面的字符比较。所有要用两个for loop， 可以说是很傻逼了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestCommonPrefix</span>(<span class="params">self, strs: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> strs <span class="keyword">or</span> <span class="built_in">len</span>(strs) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(strs) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> strs[<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        result = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span> (<span class="built_in">len</span>(strs[<span class="number">0</span>])):</span><br><span class="line">            achar = strs[<span class="number">0</span>][i]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(strs)):</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(strs[j]) &lt;= i <span class="keyword">or</span> <span class="keyword">not</span> strs[j][i] == achar:</span><br><span class="line">                    <span class="keyword">return</span> result</span><br><span class="line">            result += achar</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h4 id="53-Maximum-Subarray-2021-04-11"><a href="#53-Maximum-Subarray-2021-04-11" class="headerlink" title="53. Maximum Subarray (2021 04 11)"></a><a href="https://leetcode.com/problems/maximum-subarray/">53. Maximum Subarray</a> (2021 04 11)</h4><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<p>可以用动态规划，但是现在我只会暴力解法. 这个解法好像可以用在很多地方，只要有double loop 的地方都可以试试。但是最后一个test case过不了。应该是太慢了，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span>(<span class="params">num: <span class="built_in">list</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">    max_subarray = -math.inf</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(num)):</span><br><span class="line">        current_subarray = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span> (i , <span class="built_in">len</span>(num)):</span><br><span class="line">            current_subarray += num[j]</span><br><span class="line">            max_subarray = <span class="built_in">max</span>(max_subarray, current_subarray)</span><br><span class="line">    <span class="keyword">return</span> max_subarray</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>Programming</tag>
+        <tag>Leetcode</tag>
         <tag>Python</tag>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode with Go</title>
-    <url>/2021/04/10/Leetcode-with-Go/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>Programming</tag>
-        <tag>Leetcode</tag>
-        <tag>Go</tag>
       </tags>
   </entry>
   <entry>
