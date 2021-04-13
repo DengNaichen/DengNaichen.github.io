@@ -1156,7 +1156,11 @@
   <entry>
     <title>GANs for Polymer</title>
     <url>/2021/04/13/GANs-for-Polymer/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="整理数据"><a href="#整理数据" class="headerlink" title="整理数据"></a>整理数据</h2><p>把<code>.dat</code>文件转成<code>python</code>的data structure.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
       <tags>
         <tag>Programming</tag>
         <tag>Python</tag>
