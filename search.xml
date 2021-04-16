@@ -4,7 +4,8 @@
     <title>CS 61A</title>
     <url>/2021/04/10/CS-61A/</url>
     <content><![CDATA[<p>最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。<br>这是我上这门课的动力，8多说了，开🐛。</p>
-]]></content>
+ <span id="more"></span>
+<h2 id="Lecture-7-Recursion"><a href="#Lecture-7-Recursion" class="headerlink" title="Lecture 7: Recursion"></a><a href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">Lecture 7: Recursion</a></h2>]]></content>
       <tags>
         <tag>python🐍</tag>
         <tag>programming💻</tag>
@@ -1155,7 +1156,7 @@
 </ul>
 <h2 id="结语-规划和管理好“带宽”，稀缺问题就会迎刃而解"><a href="#结语-规划和管理好“带宽”，稀缺问题就会迎刃而解" class="headerlink" title="结语　规划和管理好“带宽”，稀缺问题就会迎刃而解"></a>结语　规划和管理好“带宽”，稀缺问题就会迎刃而解</h2>]]></content>
       <tags>
-        <tag>Reading Notes📖</tag>
+        <tag>reading notes📖</tag>
       </tags>
   </entry>
   <entry>
@@ -1201,9 +1202,9 @@
 
 ]]></content>
       <tags>
-        <tag>Physics</tag>
-        <tag>Programming电脑</tag>
-        <tag>Python🐍</tag>
+        <tag>python🐍</tag>
+        <tag>programming💻</tag>
+        <tag>physics</tag>
       </tags>
   </entry>
   <entry>
@@ -1213,8 +1214,8 @@
 <h4 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># discriminator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Discriminator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix), input</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Discriminator, self).__init__()</span><br><span class="line">        self.disc = nn.Sequential(</span><br><span class="line">            self.get_discriminator_block(im_dim, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            <span class="comment"># hidden layer, activation function is leak relu.</span></span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">2</span>, hidden_dim),</span><br><span class="line">            <span class="comment"># output layer, output is 1, which is a probability of real or fake.</span></span><br><span class="line">            nn.Linear(hidden_dim, <span class="number">1</span>),</span><br><span class="line">            <span class="comment"># the sigmoid function is a build-in function for nn.BCEWithLogitsLoss().</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_discriminator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># see detail at:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear</span></span><br><span class="line">            <span class="comment"># for a single layer without activation function.</span></span><br><span class="line">            nn.LeakyReLU(<span class="number">0.2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">            <span class="comment"># slope for x &lt; 0 is 0.2</span></span><br><span class="line">            <span class="comment"># inplace = True: inplace=True means that it will modify the input directly, without allocating any</span></span><br><span class="line">            <span class="comment"># additional output. It can sometimes slightly decrease the memory usage.</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, image</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc(image)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_disc</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc</span><br></pre></td></tr></table></figure>
 <h4 id="util-functions"><a href="#util-functions" class="headerlink" title="util functions"></a>util functions</h4><h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4>]]></content>
       <tags>
-        <tag>Programming💻</tag>
-        <tag>Pytorch</tag>
+        <tag>programming💻</tag>
+        <tag>pytorch</tag>
       </tags>
   </entry>
 </search>
