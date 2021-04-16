@@ -184,6 +184,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/%E5%AF%B9%E6%8A%97%E7%94%9F%E6%88%90%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/15/%E5%AF%B9%E6%8A%97%E7%94%9F%E6%88%90%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">对抗生成神经网络</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-15 23:57:17" itemprop="dateCreated datePublished" datetime="2021-04-15T23:57:17-04:00">2021-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-16 19:18:04" itemprop="dateModified" datetime="2021-04-16T19:18:04-04:00">2021-04-16</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Introduction-to-GANs"><a href="#Introduction-to-GANs" class="headerlink" title="Introduction to GANs"></a>Introduction to GANs</h2><h3 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        z_dim: the dimension of the noise vector </span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix)</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">        here the generator is the simplest FNN</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, z_dim=<span class="number">10</span>, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Generator, self).__init__()</span><br><span class="line">        self.gen = nn.Sequential(</span><br><span class="line">            <span class="comment"># input layer</span></span><br><span class="line">            <span class="comment"># z_dim is the dimension of noise vector</span></span><br><span class="line">            self.get_generator_block(z_dim, hidden_dim),</span><br><span class="line">            <span class="comment"># hidden layers</span></span><br><span class="line">            self.get_generator_block(hidden_dim, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">2</span>, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">8</span>),</span><br><span class="line">            <span class="comment"># output layer, the output is matrix (vector)</span></span><br><span class="line">            <span class="comment"># output dimension is im_dim</span></span><br><span class="line">            nn.Linear(hidden_dim * <span class="number">8</span>, im_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param input_dim: scalar</span></span><br><span class="line"><span class="string">        :param output_dim: scalar</span></span><br><span class="line"><span class="string">        :return: a single layer of generator</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            <span class="comment"># linear function</span></span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> not sure why need a batch normalization here</span></span><br><span class="line">            <span class="comment"># see detail here:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d</span></span><br><span class="line">            nn.BatchNorm1d(output_dim),</span><br><span class="line">            <span class="comment"># activation function</span></span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> inplace = True?</span></span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, noise</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Function for completing a forward pass of the generator: Given a noise tensor,</span></span><br><span class="line"><span class="string">        returns generated images.</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            noise: a noise tensor with dimensions (n_samples, z_dim)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen(noise)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_gen</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            the sequential model</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen</span><br></pre></td></tr></table></figure>
+<h4 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># discriminator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Discriminator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix), input</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Discriminator, self).__init__()</span><br><span class="line">        self.disc = nn.Sequential(</span><br><span class="line">            self.get_discriminator_block(im_dim, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            <span class="comment"># hidden layer, activation function is leak relu.</span></span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">2</span>, hidden_dim),</span><br><span class="line">            <span class="comment"># output layer, output is 1, which is a probability of real or fake.</span></span><br><span class="line">            nn.Linear(hidden_dim, <span class="number">1</span>),</span><br><span class="line">            <span class="comment"># the sigmoid function is a build-in function for nn.BCEWithLogitsLoss().</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_discriminator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># see detail at:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear</span></span><br><span class="line">            <span class="comment"># for a single layer without activation function.</span></span><br><span class="line">            nn.LeakyReLU(<span class="number">0.2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">            <span class="comment"># slope for x &lt; 0 is 0.2</span></span><br><span class="line">            <span class="comment"># inplace = True: inplace=True means that it will modify the input directly, without allocating any</span></span><br><span class="line">            <span class="comment"># additional output. It can sometimes slightly decrease the memory usage.</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, image</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc(image)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_disc</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc</span><br></pre></td></tr></table></figure>
+<h4 id="util-functions"><a href="#util-functions" class="headerlink" title="util functions"></a>util functions</h4><h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/13/GANs-for-Polymer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -215,7 +295,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-15 23:47:00" itemprop="dateModified" datetime="2021-04-15T23:47:00-04:00">2021-04-15</time>
+                <time title="Modified: 2021-04-16 19:18:16" itemprop="dateModified" datetime="2021-04-16T19:18:16-04:00">2021-04-16</time>
               </span>
 
           <br>
@@ -224,14 +304,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>12k</span>
+              <span>7.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>11 mins.</span>
+              <span>7 mins.</span>
             </span>
 
         </div>
@@ -456,6 +536,13 @@
 
               <time title="Created: 2021-04-10 16:20:13" itemprop="dateCreated datePublished" datetime="2021-04-10T16:20:13-04:00">2021-04-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-16 19:21:56" itemprop="dateModified" datetime="2021-04-16T19:21:56-04:00">2021-04-16</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -463,7 +550,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>0</span>
+              <span>115</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -482,7 +569,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。<br>这是我上这门课的动力，8多说了，开🐛。</p>
+
       
     </div>
 
@@ -905,14 +993,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -969,12 +1057,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">81k</span>
+    <span title="Symbols count total">80k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:13</span>
+    <span title="Reading time total">1:12</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
