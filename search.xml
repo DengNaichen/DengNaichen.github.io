@@ -5,7 +5,17 @@
     <url>/2021/04/10/CS-61A/</url>
     <content><![CDATA[<p>最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。<br>这是我上这门课的动力，8多说了，开🐛。</p>
  <span id="more"></span>
-<h2 id="Lecture-7-Recursion"><a href="#Lecture-7-Recursion" class="headerlink" title="Lecture 7: Recursion"></a><a href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">Lecture 7: Recursion</a></h2>]]></content>
+<h2 id="Lecture-7-Recursion"><a href="#Lecture-7-Recursion" class="headerlink" title="Lecture 7: Recursion"></a><a href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">Lecture 7: Recursion</a></h2><h3 id="Recursive-Function"><a href="#Recursive-Function" class="headerlink" title="Recursive Function:"></a>Recursive Function:</h3><p> Definition: A function is called recursive if the body of that function calls itself, wither directly or indirectly.</p>
+<p> The Anatomy of a recursive function</p>
+<ol>
+<li>the def statement header is similar to other functions</li>
+<li>conditional statements check for base case</li>
+<li>base cases are evaluated without recursive calls</li>
+<li>recursive case are evaluated with recursive calls</li>
+</ol>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span>(<span class="params">n</span>):</span></span><br><span class="line">   <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">       <span class="keyword">return</span> n * fact(n-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p> Environment Diagrams</p>
+]]></content>
       <tags>
         <tag>python🐍</tag>
         <tag>programming💻</tag>
