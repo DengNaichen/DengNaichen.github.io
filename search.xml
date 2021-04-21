@@ -1309,7 +1309,7 @@
 <img src="https://i.imgur.com/mUQukQR.png" width="50%" height="50%">
 
 <p>LSTM address that issue.</p>
-<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="Step-by-Step-LSTM-Walk-Through"><a href="#Step-by-Step-LSTM-Walk-Through" class="headerlink" title="Step-by_Step LSTM Walk Through"></a>Step-by_Step LSTM Walk Through</h4><p>Three gates are used in LSTM:<br>The core idea behind LSTM is cell state, which is kind of like a conveyor belt. following three gate are used to protect or control the cell state.</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="Step-by-Step-LSTM-Walk-Through"><a href="#Step-by-Step-LSTM-Walk-Through" class="headerlink" title="Step-by-Step LSTM Walk Through"></a>Step-by-Step LSTM Walk Through</h4><p>Three gates are used in LSTM:<br>The core idea behind LSTM is cell state, which is kind of like a conveyor belt. following three gate are used to protect or control the cell state.</p>
 <ol>
 <li><p>input gate</p>
 </li>
@@ -1320,13 +1320,13 @@
 </ol>
 <p>Steps:</p>
 <ol>
-<li><p>The first step decide what information we are going to throw away from cell state, by forget gate(sigmoid). 1 means keep it and 0 means get rid of this.<br> <img src="https://i.imgur.com/A4ybUdL.png" alt="LSTM3-focus-f"><br> where the ht is some output value from last step and xt is some input value(or target value from outside), note the output of gate is a scalar between 0 and 1 (which means the gates are parts of the training).</p>
+<li><p>The first step decide what information we are going to throw away from cell state, by forget gate(sigmoid). 1 means keep it and 0 means get rid of this.<br> <img src="https://i.imgur.com/A4ybUdL.png" alt="LSTM3-focus-f"><br> where the $h_{t}$ is some output value from last step and $x_{t}$ is some input value(or target value from outside), note the output of gate is a scalar between 0 and 1 (which means the gates are parts of the training).</p>
 </li>
-<li><p>the next step is to decide what new information we are going to store in the cell state. where it is a scalar number between 0 and 1, and Ct is a candidate vector, which could be added in the cell state.<br> <img src="https://i.imgur.com/Cw3sYwK.png" alt="LSTM3-focus-i"></p>
+<li><p>The next step is to decide what new information we are going to store in the cell state. where it is a scalar number between 0 and 1, and $Ct^{~}$ is a candidate vector, which could be added in the cell state.<br> <img src="https://i.imgur.com/Cw3sYwK.png" alt="LSTM3-focus-i"></p>
 </li>
-<li><p>It’s time to update the old cell state. ft decide keep how many old state and it decide how much new information could be used<br> <img src="https://i.imgur.com/8hpZxaZ.png" alt="LSTM3-focus-C"></p>
+<li><p>It’s time to update the old cell state. $f_{t}$ decide keep how many old state and $i_{t}$ decide how much new information could be used<br> <img src="https://i.imgur.com/8hpZxaZ.png" alt="LSTM3-focus-C"></p>
 </li>
-<li><p>finally, we need to decide the output, which will be based on the our cell state. again, a scalar number between 0 to 1 is trained by the ht and xt, then used to process the cell state and determain the output.<br> <img src="https://i.imgur.com/KNT8PfK.png" alt="LSTM3-focus-o"></p>
+<li><p>Finally, we need to decide the output, which will be based on the our cell state. again, a scalar number $o_t$between 0 to 1 is trained by the $h_{t}$ and $x_t$, then used to process the cell state and determine the output.<br> <img src="https://i.imgur.com/KNT8PfK.png" alt="LSTM3-focus-o"></p>
 </li>
 </ol>
 <p>c is the previous memory<br>open (remember)<br>close (forget)</p>
