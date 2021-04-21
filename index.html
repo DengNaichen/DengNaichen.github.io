@@ -189,6 +189,349 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/21/Recurrent-Neural-Network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/21/Recurrent-Neural-Network/" class="post-title-link" itemprop="url">Recurrent Neural Network</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-21 11:04:40 / Modified: 12:09:37" itemprop="dateCreated datePublished" datetime="2021-04-21T11:04:40-04:00">2021-04-21</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>941</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p> how to use number to represent a word?</p>
+<ul>
+<li><p>1 od N encoding or one hot vector<br> the vector is lexicon(词汇表） size<br> each dimension corresponds to a word in lexicon</p>
+<ol>
+<li>apple = [1 0 0 0 0]</li>
+<li>bag = [0 1 0 0 0]<br>…</li>
+<li>sometimes one more dimension to represent None (no that case in our project)</li>
+</ol>
+<p> we want the NN has memory</p>
+<p> Recurrent neural network<br> output store in memory<br> the neuron will consider not only the input, but also the data in memory.<br> Example:</p>
+<ol>
+<li>memory value should be initialized</li>
+<li>input and memory both as the output as the neural network</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/puzWFTr.png"></p>
+<p><img src="https://i.imgur.com/wXBWthp.png"></p>
+<p><img src="https://i.imgur.com/Scf3uQ7.png"></p>
+<p>even we have the same input [1,1] if the store data is different, the output is different, and the store data represent the order of our input.</p>
+<p><img src="https://i.imgur.com/kavfy3e.png"><br>so the memory will be different</p>
+<p><img src="https://i.imgur.com/ZVkW2bP.png"></p>
+<p>of course the RNN can be deep </p>
+<p>Elman Network and Jordan Network</p>
+<ol>
+<li>Elman store the value of neuron</li>
+<li>Jordan store the value of output (maybe better performance) </li>
+</ol>
+<p>Bidirectional RNN<br><img src="https://i.imgur.com/3Om00RP.png"><br>Network 看到的比较多（几乎看了整个的sentence）</p>
+<h2 id="Long-Short-term-Memory"><a href="#Long-Short-term-Memory" class="headerlink" title="Long Short-term Memory"></a>Long Short-term Memory</h2><p>(长的短期记忆而不是长短期记忆）<br>other part of the network -&gt; input gate -&gt; memory cell -&gt; output date -&gt; other part of the network</p>
+<p>and a forget gate (when and what to forget)<br>Note, all the gates are self-learning for the LSTM.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/aircraft-game/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/18/aircraft-game/" class="post-title-link" itemprop="url">aircraft game</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-18 12:36:47 / Modified: 13:11:33" itemprop="dateCreated datePublished" datetime="2021-04-18T12:36:47-04:00">2021-04-18</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>200</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>python 简明教程的第一个项目，外星人入侵，主要是学习一下怎么重构代码。</p>
+<h2 id="create-conda-environment"><a href="#create-conda-environment" class="headerlink" title="create conda environment"></a>create conda environment</h2><p>create conda environment<br>install <code>pygame</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create --name game python&#x3D;3.6</span><br><span class="line">conda activate game</span><br><span class="line">python3 -m pip install -U pygame --user</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-the-aircraft"><a href="#Create-the-aircraft" class="headerlink" title="Create the aircraft"></a>Create the aircraft</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/Lecture-9-Containers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/17/Lecture-9-Containers/" class="post-title-link" itemprop="url">Lecture 9 Containers</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-17 10:14:48 / Modified: 10:15:43" itemprop="dateCreated datePublished" datetime="2021-04-17T10:14:48-04:00">2021-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61a%F0%9F%99%8B/" itemprop="url" rel="index"><span itemprop="name">cs61a🙋</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=VRFqir6dTrg&list=PL6BsET-8jgYU1eWkdF45L1Pce1d4DxJcR">video</a></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/17/Lecture-8-Tree-Recursion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/17/Lecture-8-Tree-Recursion/" class="post-title-link" itemprop="url">Lecture 8 Tree Recursion</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-17 10:14:26 / Modified: 10:16:25" itemprop="dateCreated datePublished" datetime="2021-04-17T10:14:26-04:00">2021-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs61a%F0%9F%99%8B/" itemprop="url" rel="index"><span itemprop="name">cs61a🙋</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gXw6_D_B7xQ&list=PL6BsET-8jgYUaHO4eXAJD2v53HYAdFNk-">video</a></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/%E5%AF%B9%E6%8A%97%E7%94%9F%E6%88%90%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +563,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-16 19:24:38" itemprop="dateModified" datetime="2021-04-16T19:24:38-04:00">2021-04-16</time>
+                <time title="Modified: 2021-04-20 20:44:26" itemprop="dateModified" datetime="2021-04-20T20:44:26-04:00">2021-04-20</time>
               </span>
 
           <br>
@@ -229,7 +572,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.9k</span>
+              <span>3.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -248,7 +591,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Introduction-to-GANs"><a href="#Introduction-to-GANs" class="headerlink" title="Introduction to GANs"></a>Introduction to GANs</h2><h3 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        z_dim: the dimension of the noise vector </span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix)</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">        here the generator is the simplest FNN</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, z_dim=<span class="number">10</span>, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Generator, self).__init__()</span><br><span class="line">        self.gen = nn.Sequential(</span><br><span class="line">            <span class="comment"># input layer</span></span><br><span class="line">            <span class="comment"># z_dim is the dimension of noise vector</span></span><br><span class="line">            self.get_generator_block(z_dim, hidden_dim),</span><br><span class="line">            <span class="comment"># hidden layers</span></span><br><span class="line">            self.get_generator_block(hidden_dim, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">2</span>, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">8</span>),</span><br><span class="line">            <span class="comment"># output layer, the output is matrix (vector)</span></span><br><span class="line">            <span class="comment"># output dimension is im_dim</span></span><br><span class="line">            nn.Linear(hidden_dim * <span class="number">8</span>, im_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param input_dim: scalar</span></span><br><span class="line"><span class="string">        :param output_dim: scalar</span></span><br><span class="line"><span class="string">        :return: a single layer of generator</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            <span class="comment"># linear function</span></span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> not sure why need a batch normalization here</span></span><br><span class="line">            <span class="comment"># see detail here:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d</span></span><br><span class="line">            nn.BatchNorm1d(output_dim),</span><br><span class="line">            <span class="comment"># activation function</span></span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> inplace = True?</span></span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, noise</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Function for completing a forward pass of the generator: Given a noise tensor,</span></span><br><span class="line"><span class="string">        returns generated images.</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            noise: a noise tensor with dimensions (n_samples, z_dim)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen(noise)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_gen</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            the sequential model</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen</span><br></pre></td></tr></table></figure>
+          <h2 id="Introduction-to-GANs"><a href="#Introduction-to-GANs" class="headerlink" title="Introduction to GANs"></a>Introduction to GANs</h2><h3 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h3><p>GANs 主要由两个部分完成</p>
+<ol>
+<li>定义一个模型来作为生成器（图三中蓝色部分Generator），能够输入一个向量，输出手写数字大小的像素图像。</li>
+<li>定义一个分类器来作为判别器（图三中红色部分Discriminator）用来判别图片是真的还是假的（或者说是来自数据集中的还是生成器中生成的）。这里的输出就是一个概率，real or fake。</li>
+</ol>
+<p>如何训练？</p>
+<ol>
+<li>我们一般想要生成器需要输入一个噪音，主要是为了保证生成的图片都是不一样的（当然会有包括一些信息，比如生成1还是9）但是在这里先不做考虑，只要输出可以骗过discriminator就好。</li>
+<li></li>
+</ol>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        z_dim: the dimension of the noise vector </span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix)</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">        here the generator is the simplest FNN</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, z_dim=<span class="number">10</span>, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Generator, self).__init__()</span><br><span class="line">        self.gen = nn.Sequential(</span><br><span class="line">            <span class="comment"># input layer</span></span><br><span class="line">            <span class="comment"># z_dim is the dimension of noise vector</span></span><br><span class="line">            self.get_generator_block(z_dim, hidden_dim),</span><br><span class="line">            <span class="comment"># hidden layers</span></span><br><span class="line">            self.get_generator_block(hidden_dim, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">2</span>, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">8</span>),</span><br><span class="line">            <span class="comment"># output layer, the output is matrix (vector)</span></span><br><span class="line">            <span class="comment"># output dimension is im_dim</span></span><br><span class="line">            nn.Linear(hidden_dim * <span class="number">8</span>, im_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param input_dim: scalar</span></span><br><span class="line"><span class="string">        :param output_dim: scalar</span></span><br><span class="line"><span class="string">        :return: a single layer of generator</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            <span class="comment"># linear function</span></span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> not sure why need a batch normalization here</span></span><br><span class="line">            <span class="comment"># see detail here:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d</span></span><br><span class="line">            nn.BatchNorm1d(output_dim),</span><br><span class="line">            <span class="comment"># activation function</span></span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> inplace = True?</span></span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, noise</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Function for completing a forward pass of the generator: Given a noise tensor,</span></span><br><span class="line"><span class="string">        returns generated images.</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            noise: a noise tensor with dimensions (n_samples, z_dim)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen(noise)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_gen</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            the sequential model</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen</span><br></pre></td></tr></table></figure>
 <h4 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># discriminator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Discriminator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix), input</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Discriminator, self).__init__()</span><br><span class="line">        self.disc = nn.Sequential(</span><br><span class="line">            self.get_discriminator_block(im_dim, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            <span class="comment"># hidden layer, activation function is leak relu.</span></span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">2</span>, hidden_dim),</span><br><span class="line">            <span class="comment"># output layer, output is 1, which is a probability of real or fake.</span></span><br><span class="line">            nn.Linear(hidden_dim, <span class="number">1</span>),</span><br><span class="line">            <span class="comment"># the sigmoid function is a build-in function for nn.BCEWithLogitsLoss().</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_discriminator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># see detail at:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear</span></span><br><span class="line">            <span class="comment"># for a single layer without activation function.</span></span><br><span class="line">            nn.LeakyReLU(<span class="number">0.2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">            <span class="comment"># slope for x &lt; 0 is 0.2</span></span><br><span class="line">            <span class="comment"># inplace = True: inplace=True means that it will modify the input directly, without allocating any</span></span><br><span class="line">            <span class="comment"># additional output. It can sometimes slightly decrease the memory usage.</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, image</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc(image)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_disc</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc</span><br></pre></td></tr></table></figure>
 <h4 id="util-functions"><a href="#util-functions" class="headerlink" title="util functions"></a>util functions</h4><h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4>
       
@@ -552,7 +905,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-16 20:49:14" itemprop="dateModified" datetime="2021-04-16T20:49:14-04:00">2021-04-16</time>
+                <time title="Modified: 2021-04-16 21:02:03" itemprop="dateModified" datetime="2021-04-16T21:02:03-04:00">2021-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -560,7 +913,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61a/" itemprop="url" rel="index"><span itemprop="name">cs61a</span></a>
+                  <a href="/categories/cs61a%F0%9F%99%8B/" itemprop="url" rel="index"><span itemprop="name">cs61a🙋</span></a>
                 </span>
             </span>
 
@@ -570,7 +923,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>651</span>
+              <span>751</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -685,276 +1038,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/" class="post-title-link" itemprop="url">这本书能让你戒烟</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-10 16:15:23" itemprop="dateCreated datePublished" datetime="2021-04-10T16:15:23-04:00">2021-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-11 17:34:10" itemprop="dateModified" datetime="2021-04-11T17:34:10-04:00">2021-04-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>11 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h3><ul>
-<li><p>英国政府已经在电视广告上浪费了几百万英镑，试图说服青少年不要吸烟。这就如同在广告里告诉他们，骑摩托车有可能出事故，他们绝不会因为这个就不骑摩托车。青少年都清楚，一根香烟并不会夺走他们的生命。他们初次尝试吸烟时，都不认为自己会染上烟瘾。吸烟和肺癌之间的联系早已众所周知，尽管如此，青</p>
-</li>
-<li><p>获得的东西，是全世界每个吸烟者都全心渴望的：自由！</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/06/Leetcode-with-Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/06/Leetcode-with-Python/" class="post-title-link" itemprop="url">Leetcode with Python</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-06 16:19:23" itemprop="dateCreated datePublished" datetime="2021-04-06T16:19:23-04:00">2021-04-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-11 15:55:35" itemprop="dateModified" datetime="2021-04-11T15:55:35-04:00">2021-04-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Leetcode python 刷题记录，日更</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/06/Leetcode-with-Python/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/20/%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/" class="post-title-link" itemprop="url">人类简史</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-20T00:00:00-05:00">2021-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-11 17:42:58" itemprop="dateModified" datetime="2021-04-11T17:42:58-04:00">2021-04-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>31k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>29 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="第一部分-认知革命"><a href="#第一部分-认知革命" class="headerlink" title="第一部分 认知革命"></a>第一部分 认知革命</h2><h3 id="第二章-知善恶树"><a href="#第二章-知善恶树" class="headerlink" title="第二章 知善恶树"></a>第二章 知善恶树</h3><ul>
-<li><p>人类语言真正最独特的功能，并不在于能够传达关于人或狮子的信息，而是能够传达关于一些根本不存在的事物的信息。</p>
-</li>
-<li><p>然而，“虚构”这件事的重点不只在于让人类能够拥有想象，更重要的是可以“一起”想象，编织出种种共同的虚构故事，不管是《圣经》的《创世记》、澳大利亚原住民的“梦世记”（ Dreamtime），甚至连现代所谓的国家其实也是种想象。</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/20/%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -1021,7 +1109,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1091,12 +1179,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">80k</span>
+    <span title="Symbols count total">82k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:13</span>
+    <span title="Reading time total">1:14</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
