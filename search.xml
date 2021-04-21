@@ -1281,11 +1281,19 @@
     <url>/2021/04/21/Recurrent-Neural-Network/</url>
     <content><![CDATA[<p><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">The best explaination I read so far</a></p>
 <p><a href="https://www.bilibili.com/video/BV1Qy4y1h7nF?p=1">李宏毅的机器学习课程</a></p>
-<p>The shortcoming of traditional neural network: they think and calculate from scratch every second, or in other words, they cannot deal with context information. Recurrent neural network address this issue.</p>
-<p>the feature of RNN:</p>
+ <span id="more"></span>
+<h2 id="Basic-Idea-Of-RNN"><a href="#Basic-Idea-Of-RNN" class="headerlink" title="Basic Idea Of RNN"></a>Basic Idea Of RNN</h2><p>The shortcoming of traditional neural network: they think and calculate from scratch every second, or in other words, they cannot deal with context information. Recurrent neural network address this issue.</p>
+<p>the feature of RNN: RNN has loop, allowing information to persist. In other words, RNN has “memory” to store what’s previous step going on.<br><img src="https://i.imgur.com/E1X5YwM.png" alt="RNN-unrolled"></p>
+<p>For example: consider following neural network. If we fixed the weights are 1 and 1, no bias. Inputs are [1,1], [1,1] and [2,2] … The initial value of the “memory” is [0,0].</p>
 <ol>
-<li>RNN has loop, allowing information to persist. In other words, RNN has “memory” to store what’s previous step going on.<br><img src="https://i.imgur.com/E1X5YwM.png" alt="RNN-unrolled"></li>
+<li><p>input is [1,1], output is [4,4], store [2,2], which is the value of the neuron</p>
+</li>
+<li><p>output is again [1,1], memory is [2,2], so value of neuron is [2 * 1 + 2 * 1 * 1 * 1 + 1 * 1 = 6, 6]. The output is [12, 12] while the memory is updated to [6,6]. Even 1 and 2 has the same input, the output is distinct because of the difference of memory. That’s the <strong>basic</strong> idea of RNN.<br><img src="https://i.imgur.com/OiHylWF.png" alt="Screen Shot 2021-04-21 at 5.21.42 PM"></p>
+</li>
 </ol>
+<h2 id="Represent-sequence-data"><a href="#Represent-sequence-data" class="headerlink" title="Represent sequence data"></a>Represent sequence data</h2><p>RNNs are mainly used to deal with sequence data. such as translation or speech recognition. All the words are catigorical feature, so we use 1 to N encoding or one hot vector to represent them.</p>
+<p>for example:<br>“apple” = [1,0,0,0]<br>“orange” = [0,1,0,0]<br>“banana” = [0,0,1,0]<br>“tomato” = [0,0,1,0]</p>
+<p>using scalar to represent catigorial features is not allowed.</p>
 <h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p> how to use number to represent a word?</p>
 <ul>
 <li><p>1 od N encoding or one hot vector<br> the vector is lexicon(词汇表） size<br> each dimension corresponds to a word in lexicon</p>

@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-04-21 11:04:40 / Modified: 17:06:15" itemprop="dateCreated datePublished" datetime="2021-04-21T11:04:40-04:00">2021-04-21</time>
+              <time title="Created: 2021-04-21 11:04:40 / Modified: 17:34:49" itemprop="dateCreated datePublished" datetime="2021-04-21T11:04:40-04:00">2021-04-21</time>
             </span>
 
           <br>
@@ -223,14 +223,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.5k</span>
+              <span>5.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>4 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -244,62 +244,14 @@
       
           <p><a target="_blank" rel="noopener" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">The best explaination I read so far</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qy4y1h7nF?p=1">李宏毅的机器学习课程</a></p>
-<p>The shortcoming of traditional neural network: they think and calculate from scratch every second, or in other words, they cannot deal with context information. Recurrent neural network address this issue.</p>
-<p>the feature of RNN:</p>
-<ol>
-<li>RNN has loop, allowing information to persist. In other words, RNN has “memory” to store what’s previous step going on.<br><img src="https://i.imgur.com/E1X5YwM.png" alt="RNN-unrolled"></li>
-</ol>
-<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p> how to use number to represent a word?</p>
-<ul>
-<li><p>1 od N encoding or one hot vector<br> the vector is lexicon(词汇表） size<br> each dimension corresponds to a word in lexicon</p>
-<ol>
-<li>apple = [1 0 0 0 0]</li>
-<li>bag = [0 1 0 0 0]<br>…</li>
-<li>sometimes one more dimension to represent None (no that case in our project)</li>
-</ol>
-<p> we want the NN has memory</p>
-<p> Recurrent neural network<br> output store in memory<br> the neuron will consider not only the input, but also the data in memory.<br> Example:</p>
-<ol>
-<li>memory value should be initialized</li>
-<li>input and memory both as the output as the neural network</li>
-</ol>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/puzWFTr.png"></p>
-<p><img src="https://i.imgur.com/wXBWthp.png"></p>
-<p><img src="https://i.imgur.com/Scf3uQ7.png"></p>
-<p>even we have the same input [1,1] if the store data is different, the output is different, and the store data represent the order of our input.</p>
-<p><img src="https://i.imgur.com/kavfy3e.png"><br>so the memory will be different</p>
-<p><img src="https://i.imgur.com/ZVkW2bP.png"></p>
-<p>of course the RNN can be deep </p>
-<p>Elman Network and Jordan Network</p>
-<ol>
-<li>Elman store the value of neuron</li>
-<li>Jordan store the value of output (maybe better performance) </li>
-</ol>
-<p>Bidirectional RNN<br><img src="https://i.imgur.com/3Om00RP.png"><br>Network 看到的比较多（几乎看了整个的sentence）</p>
-<p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">epoch = <span class="number">1</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">time_step = <span class="number">28</span> </span><br><span class="line">input_size = <span class="number">28</span></span><br><span class="line"><span class="comment"># for mnist, 28 pixel for each line is 28, therefore the time_step and input size are both 28.</span></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span>(<span class="params">nn.module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RNN, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.rnn = nn.LSTM(</span><br><span class="line">        input_size = input_size,</span><br><span class="line">        hidden_size = <span class="number">64</span>,</span><br><span class="line">        num_layers = <span class="number">1</span>,</span><br><span class="line">        batch_first = <span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(<span class="number">64</span>, <span class="number">10</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        r_out, h_n, h_c = self.rnn(x, <span class="literal">None</span>) <span class="comment"># None is the first hidden state</span></span><br><span class="line">        out = self.out(r_out[:, -<span class="number">1</span>, :]) <span class="comment"># (batch, time step, input)</span></span><br><span class="line"></span><br><span class="line">rnn = RNN()</span><br><span class="line"><span class="built_in">print</span> (rnn)     </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.Adam(rnn.parameters(), lr=LR)   <span class="comment"># optimize all parameters</span></span><br><span class="line">loss_func = nn.CrossEntropyLoss()   <span class="comment"># the target label is not one-hotted</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># training and testing</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(EPOCH):</span><br><span class="line">    <span class="keyword">for</span> step, (x, b_y) <span class="keyword">in</span> <span class="built_in">enumerate</span>(train_loader):   <span class="comment"># gives batch data</span></span><br><span class="line">        b_x = x.view(-<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)   <span class="comment"># reshape x to (batch, time_step, input_size)</span></span><br><span class="line"></span><br><span class="line">        output = rnn(b_x)               <span class="comment"># rnn output</span></span><br><span class="line">        loss = loss_func(output, b_y)   <span class="comment"># cross entropy loss</span></span><br><span class="line">        optimizer.zero_grad()           <span class="comment"># clear gradients for this training step</span></span><br><span class="line">        loss.backward()                 <span class="comment"># backpropagation, compute gradients</span></span><br><span class="line">        optimizer.step()                <span class="comment"># apply gradients</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>回归：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">torch.manual_seed(<span class="number">1</span>)    <span class="comment"># reproducible</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Hyper Parameters</span></span><br><span class="line">TIME_STEP = <span class="number">10</span>      <span class="comment"># rnn time step / image height</span></span><br><span class="line">INPUT_SIZE = <span class="number">1</span>      <span class="comment"># rnn input size / image width</span></span><br><span class="line">LR = <span class="number">0.02</span>           <span class="comment"># learning rate</span></span><br><span class="line">DOWNLOAD_MNIST = <span class="literal">False</span>  <span class="comment"># set to True if haven&#x27;t download the data</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RNN, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.rnn = nn.RNN(  <span class="comment"># 这回一个普通的 RNN 就能胜任</span></span><br><span class="line">            input_size=<span class="number">1</span>,</span><br><span class="line">            hidden_size=<span class="number">32</span>,     <span class="comment"># rnn hidden unit</span></span><br><span class="line">            num_layers=<span class="number">1</span>,       <span class="comment"># 有几层 RNN layers</span></span><br><span class="line">            batch_first=<span class="literal">True</span>,   <span class="comment"># input &amp; output 会是以 batch size 为第一维度的特征集 e.g. (batch, time_step, input_size)</span></span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(<span class="number">32</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, h_state</span>):</span>  <span class="comment"># 因为 hidden state 是连续的, 所以我们要一直传递这一个 state</span></span><br><span class="line">        <span class="comment"># x (batch, time_step, input_size)</span></span><br><span class="line">        <span class="comment"># h_state (n_layers, batch, hidden_size)</span></span><br><span class="line">        <span class="comment"># r_out (batch, time_step, output_size)</span></span><br><span class="line">        r_out, h_state = self.rnn(x, h_state)   <span class="comment"># h_state 也要作为 RNN 的一个输入</span></span><br><span class="line"></span><br><span class="line">        outs = []    <span class="comment"># 保存所有时间点的预测值</span></span><br><span class="line">        <span class="keyword">for</span> time_step <span class="keyword">in</span> <span class="built_in">range</span>(r_out.size(<span class="number">1</span>)):    <span class="comment"># 对每一个时间点计算 output</span></span><br><span class="line">            outs.append(self.out(r_out[:, time_step, :]))</span><br><span class="line">        <span class="keyword">return</span> torch.stack(outs, dim=<span class="number">1</span>), h_state</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rnn = RNN()</span><br><span class="line"><span class="built_in">print</span>(rnn)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, h_state</span>):</span></span><br><span class="line">    r_out, h_state = self.rnn(x, h_state)</span><br><span class="line">    r_out = r_out.view(-<span class="number">1</span>, <span class="number">32</span>)</span><br><span class="line">    outs = self.out(r_out)</span><br><span class="line">    <span class="keyword">return</span> outs.view(-<span class="number">1</span>, <span class="number">32</span>, TIME_STEP), h_state</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.Adam(rnn.parameters(), lr=LR)   <span class="comment"># optimize all rnn parameters</span></span><br><span class="line">loss_func = nn.MSELoss()</span><br><span class="line"></span><br><span class="line">h_state = <span class="literal">None</span>   <span class="comment"># 要使用初始 hidden state, 可以设成 None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    start, end = step * np.pi, (step+<span class="number">1</span>)*np.pi   <span class="comment"># time steps</span></span><br><span class="line">    <span class="comment"># sin 预测 cos</span></span><br><span class="line">    steps = np.linspace(start, end, <span class="number">10</span>, dtype=np.float32)</span><br><span class="line">    x_np = np.sin(steps)    <span class="comment"># float32 for converting torch FloatTensor</span></span><br><span class="line">    y_np = np.cos(steps)</span><br><span class="line"></span><br><span class="line">    x = torch.from_numpy(x_np[np.newaxis, :, np.newaxis])    <span class="comment"># shape (batch, time_step, input_size)</span></span><br><span class="line">    y = torch.from_numpy(y_np[np.newaxis, :, np.newaxis])</span><br><span class="line"></span><br><span class="line">    prediction, h_state = rnn(x, h_state)   <span class="comment"># rnn 对于每个 step 的 prediction, 还有最后一个 step 的 h_state</span></span><br><span class="line">    <span class="comment"># !!  下一步十分重要 !!</span></span><br><span class="line">    h_state = h_state.data  <span class="comment"># 要把 h_state 重新包装一下才能放入下一个 iteration, 不然会报错</span></span><br><span class="line"></span><br><span class="line">    loss = loss_func(prediction, y)     <span class="comment"># cross entropy loss</span></span><br><span class="line">    optimizer.zero_grad()               <span class="comment"># clear gradients for this training step</span></span><br><span class="line">    loss.backward()                     <span class="comment"># backpropagation, compute gradients</span></span><br><span class="line">    optimizer.step()                    <span class="comment"># apply gradients</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Long-Short-term-Memory"><a href="#Long-Short-term-Memory" class="headerlink" title="Long Short-term Memory"></a>Long Short-term Memory</h2><p>(长的短期记忆,<br>而不是长短期记忆）<br>other part of the network -&gt; input gate -&gt; memory cell -&gt; output date -&gt; other part of the network<br>(how many to store, how many to forget and how many to output) </p>
-<p>and a forget gate (when and what to forget)<br>Note, all the gates are self-learning for the LSTM.</p>
-<p>z_{i}, zo and zf is scalars, aactivation function will be sigmoid function, between 0 to 1. to show the degree of being opened.</p>
-<p>c is the previous memory<br>open (remember)<br>close (forget)</p>
-<p><img src="https://i.imgur.com/8GdLaIt.png"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/21/Recurrent-Neural-Network/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1205,12 +1157,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">85k</span>
+    <span title="Symbols count total">86k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:17</span>
+    <span title="Reading time total">1:18</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
