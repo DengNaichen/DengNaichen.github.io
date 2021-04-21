@@ -1296,8 +1296,30 @@
 <p>for example:<br>“apple” = [1,0,0,0]<br>“orange” = [0,1,0,0]<br>“banana” = [0,0,1,0]<br>“tomato” = [0,0,0,1]</p>
 <p>Using scalar to represent catigorial features is not allowed. Sometimes one more dimension is needed to represent <code>None</code> (no need in polymer project).</p>
 <h2 id="Long-Short-term-Memory-LSTM"><a href="#Long-Short-term-Memory-LSTM" class="headerlink" title="Long Short-term Memory (LSTM)"></a>Long Short-term Memory (LSTM)</h2><h3 id="shortcoming-for-‘plain’-RNNs"><a href="#shortcoming-for-‘plain’-RNNs" class="headerlink" title="shortcoming for ‘plain’ RNNs"></a>shortcoming for ‘plain’ RNNs</h3><p>Of course the RNN can be deep and complex. some common rnns are Elman Network and Jordan Network. 1. Elman store the value of neuron and Jordan store the value of output (maybe better performance). Bidirectional RNN is also used to see the whole sentance.<br><img src="https://i.imgur.com/3Om00RP.png" alt="Bidirectional RNN"><br>The most common used RNN is called long short-term memory.<br>How long ‘momory’ should we use?<br>“the clouds are in the <em>sky</em>“, short memory.<br><img src="https://i.imgur.com/EntI5jC.png" alt="RNN-shorttermdepdencies"></p>
-<p>but for “I grew up in China, …, I speak fluent Chinese”, nn might know a language should be following with ‘speak’, but which language? There is a huge gap between speak and China, and as that gap grows, RNNs become unable to learn to connect the information.<br><img src="https://i.imgur.com/mUQukQR.png" alt="RNN-longtermdependencies"><br>LSTM address that issue.</p>
-<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="Step-by-Step-LSTM-Walk-Through"><a href="#Step-by-Step-LSTM-Walk-Through" class="headerlink" title="Step-by_Step LSTM Walk Through"></a>Step-by_Step LSTM Walk Through</h4><p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
+<p>but for “I grew up in China, …, I speak fluent Chinese”, nn might know a language should be following with ‘speak’, but which language? There is a huge gap between speak and China, and as that gap grows, RNNs become unable to learn to connect the information.<br><img src="https://i.imgur.com/mUQukQR.png" alt="RNN-longtermdependencies"></p>
+<img src="https://i.imgur.com/mUQukQR.png" width="50%" height="50%">
+
+<p>LSTM address that issue.</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="Step-by-Step-LSTM-Walk-Through"><a href="#Step-by-Step-LSTM-Walk-Through" class="headerlink" title="Step-by_Step LSTM Walk Through"></a>Step-by_Step LSTM Walk Through</h4><p>Three gates are used in LSTM:<br>The core idea behind LSTM is cell state, which is kind of like a conveyor belt. following three gate are used to protect or control the cell state.</p>
+<ol>
+<li><p>input gate</p>
+</li>
+<li><p>output gate</p>
+</li>
+<li><p>forget gate</p>
+</li>
+</ol>
+<p>Steps:</p>
+<ol>
+<li><p>The first step decide what information we are going to throw away from cell state, by forget gate(sigmoid). 1 means keep it and 0 means get rid of this.<br> <img src="https://i.imgur.com/A4ybUdL.png" alt="LSTM3-focus-f"></p>
+</li>
+<li><p><img src="https://i.imgur.com/Cw3sYwK.png" alt="LSTM3-focus-i"></p>
+</li>
+<li><p><img src="https://i.imgur.com/8hpZxaZ.png" alt="LSTM3-focus-C"></p>
+</li>
+</ol>
+<p>c is the previous memory<br>open (remember)<br>close (forget)</p>
+<p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">epoch = <span class="number">1</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">time_step = <span class="number">28</span> </span><br><span class="line">input_size = <span class="number">28</span></span><br><span class="line"><span class="comment"># for mnist, 28 pixel for each line is 28, therefore the time_step and input size are both 28.</span></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span>(<span class="params">nn.module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RNN, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.rnn = nn.LSTM(</span><br><span class="line">        input_size = input_size,</span><br><span class="line">        hidden_size = <span class="number">64</span>,</span><br><span class="line">        num_layers = <span class="number">1</span>,</span><br><span class="line">        batch_first = <span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(<span class="number">64</span>, <span class="number">10</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        r_out, h_n, h_c = self.rnn(x, <span class="literal">None</span>) <span class="comment"># None is the first hidden state</span></span><br><span class="line">        out = self.out(r_out[:, -<span class="number">1</span>, :]) <span class="comment"># (batch, time step, input)</span></span><br><span class="line"></span><br><span class="line">rnn = RNN()</span><br><span class="line"><span class="built_in">print</span> (rnn)     </span><br></pre></td></tr></table></figure>
