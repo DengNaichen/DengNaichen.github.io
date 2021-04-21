@@ -30,9 +30,11 @@
 <meta property="og:image" content="https://i.imgur.com/E1X5YwM.png">
 <meta property="og:image" content="https://i.imgur.com/OiHylWF.png">
 <meta property="og:image" content="https://i.imgur.com/3Om00RP.png">
+<meta property="og:image" content="https://i.imgur.com/EntI5jC.png">
+<meta property="og:image" content="https://i.imgur.com/mUQukQR.png">
 <meta property="og:image" content="https://i.imgur.com/8GdLaIt.png">
 <meta property="article:published_time" content="2021-04-21T15:04:40.000Z">
-<meta property="article:modified_time" content="2021-04-21T21:44:19.833Z">
+<meta property="article:modified_time" content="2021-04-21T22:03:39.874Z">
 <meta property="article:author" content="Naicheng Deng">
 <meta property="article:tag" content="programming💻">
 <meta name="twitter:card" content="summary">
@@ -224,7 +226,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-04-21 11:04:40 / Modified: 17:44:19" itemprop="dateCreated datePublished" datetime="2021-04-21T11:04:40-04:00">2021-04-21</time>
+              <time title="Created: 2021-04-21 11:04:40 / Modified: 18:03:39" itemprop="dateCreated datePublished" datetime="2021-04-21T11:04:40-04:00">2021-04-21</time>
             </span>
 
           <br>
@@ -233,14 +235,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.9k</span>
+              <span>5.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>4 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -268,8 +270,9 @@
 <h2 id="Represent-sequence-data"><a href="#Represent-sequence-data" class="headerlink" title="Represent sequence data"></a>Represent sequence data</h2><p>RNNs are mainly used to deal with sequence data. such as translation or speech recognition. All the words are catigorical feature, so we use 1 to N encoding or one hot vector to represent them.</p>
 <p>for example:<br>“apple” = [1,0,0,0]<br>“orange” = [0,1,0,0]<br>“banana” = [0,0,1,0]<br>“tomato” = [0,0,0,1]</p>
 <p>Using scalar to represent catigorial features is not allowed. Sometimes one more dimension is needed to represent <code>None</code> (no need in polymer project).</p>
-<h2 id="Long-Short-term-Memory-LSTM"><a href="#Long-Short-term-Memory-LSTM" class="headerlink" title="Long Short-term Memory (LSTM)"></a>Long Short-term Memory (LSTM)</h2><p>Of course the RNN can be deep and complex. some common rnns are Elman Network and Jordan Network. 1. Elman store the value of neuron and Jordan store the value of output (maybe better performance). Bidirectional RNN is also used to see the whole sentance.<br><img src="https://i.imgur.com/3Om00RP.png" alt="Bidirectional RNN"><br>The most common used RNN is called long short-term memory.</p>
-<p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
+<h2 id="Long-Short-term-Memory-LSTM"><a href="#Long-Short-term-Memory-LSTM" class="headerlink" title="Long Short-term Memory (LSTM)"></a>Long Short-term Memory (LSTM)</h2><h3 id="shortcoming-for-‘plain’-RNNs"><a href="#shortcoming-for-‘plain’-RNNs" class="headerlink" title="shortcoming for ‘plain’ RNNs"></a>shortcoming for ‘plain’ RNNs</h3><p>Of course the RNN can be deep and complex. some common rnns are Elman Network and Jordan Network. 1. Elman store the value of neuron and Jordan store the value of output (maybe better performance). Bidirectional RNN is also used to see the whole sentance.<br><img src="https://i.imgur.com/3Om00RP.png" alt="Bidirectional RNN"><br>The most common used RNN is called long short-term memory.<br>How long ‘momory’ should we use?<br>“the clouds are in the <em>sky</em>“, short memory.<br><img src="https://i.imgur.com/EntI5jC.png" alt="RNN-shorttermdepdencies"></p>
+<p>but for “I grew up in China, …, I speak fluent Chinese”, nn might know a language should be following with ‘speak’, but which language? There is a huge gap between speak and China, and as that gap grows, RNNs become unable to learn to connect the information.<br><img src="https://i.imgur.com/mUQukQR.png" alt="RNN-longtermdependencies"><br>LSTM address that issue.</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="Step-by-Step-LSTM-Walk-Through"><a href="#Step-by-Step-LSTM-Walk-Through" class="headerlink" title="Step-by_Step LSTM Walk Through"></a>Step-by_Step LSTM Walk Through</h4><p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">epoch = <span class="number">1</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">time_step = <span class="number">28</span> </span><br><span class="line">input_size = <span class="number">28</span></span><br><span class="line"><span class="comment"># for mnist, 28 pixel for each line is 28, therefore the time_step and input size are both 28.</span></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span>(<span class="params">nn.module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RNN, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.rnn = nn.LSTM(</span><br><span class="line">        input_size = input_size,</span><br><span class="line">        hidden_size = <span class="number">64</span>,</span><br><span class="line">        num_layers = <span class="number">1</span>,</span><br><span class="line">        batch_first = <span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(<span class="number">64</span>, <span class="number">10</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        r_out, h_n, h_c = self.rnn(x, <span class="literal">None</span>) <span class="comment"># None is the first hidden state</span></span><br><span class="line">        out = self.out(r_out[:, -<span class="number">1</span>, :]) <span class="comment"># (batch, time step, input)</span></span><br><span class="line"></span><br><span class="line">rnn = RNN()</span><br><span class="line"><span class="built_in">print</span> (rnn)     </span><br></pre></td></tr></table></figure>
@@ -370,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Idea-Of-RNN"><span class="nav-number">1.</span> <span class="nav-text">Basic Idea Of RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Represent-sequence-data"><span class="nav-number">2.</span> <span class="nav-text">Represent sequence data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Short-term-Memory-LSTM"><span class="nav-number">3.</span> <span class="nav-text">Long Short-term Memory (LSTM)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Short-term-Memory"><span class="nav-number">4.</span> <span class="nav-text">Long Short-term Memory</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Idea-Of-RNN"><span class="nav-number">1.</span> <span class="nav-text">Basic Idea Of RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Represent-sequence-data"><span class="nav-number">2.</span> <span class="nav-text">Represent sequence data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Short-term-Memory-LSTM"><span class="nav-number">3.</span> <span class="nav-text">Long Short-term Memory (LSTM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shortcoming-for-%E2%80%98plain%E2%80%99-RNNs"><span class="nav-number">3.1.</span> <span class="nav-text">shortcoming for ‘plain’ RNNs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSTM"><span class="nav-number">3.2.</span> <span class="nav-text">LSTM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-by-Step-LSTM-Walk-Through"><span class="nav-number">3.2.1.</span> <span class="nav-text">Step-by_Step LSTM Walk Through</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Short-term-Memory"><span class="nav-number">4.</span> <span class="nav-text">Long Short-term Memory</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
