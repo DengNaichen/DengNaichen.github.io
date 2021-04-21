@@ -1293,16 +1293,9 @@
 </li>
 </ol>
 <h2 id="Represent-sequence-data"><a href="#Represent-sequence-data" class="headerlink" title="Represent sequence data"></a>Represent sequence data</h2><p>RNNs are mainly used to deal with sequence data. such as translation or speech recognition. All the words are catigorical feature, so we use 1 to N encoding or one hot vector to represent them.</p>
-<p>for example:<br>“apple” = [1,0,0,0]<br>“orange” = [0,1,0,0]<br>“banana” = [0,0,1,0]<br>“tomato” = [0,0,1,0]</p>
+<p>for example:<br>“apple” = [1,0,0,0]<br>“orange” = [0,1,0,0]<br>“banana” = [0,0,1,0]<br>“tomato” = [0,0,0,1]</p>
 <p>Using scalar to represent catigorial features is not allowed. Sometimes one more dimension is needed to represent <code>None</code> (no need in polymer project).</p>
-<h2 id="of-course-the-RNN-can-be-deep"><a href="#of-course-the-RNN-can-be-deep" class="headerlink" title="of course the RNN can be deep"></a>of course the RNN can be deep</h2><p>Elman Network and Jordan Network</p>
-<ol>
-<li><p>Elman store the value of neuron</p>
-</li>
-<li><p>Jordan store the value of output (maybe better performance)</p>
-</li>
-</ol>
-<p>Bidirectional RNN<br><img src="https://i.imgur.com/3Om00RP.png"><br>Network 看到的比较多（几乎看了整个的sentence）</p>
+<h2 id="Long-Short-term-Memory-LSTM"><a href="#Long-Short-term-Memory-LSTM" class="headerlink" title="Long Short-term Memory (LSTM)"></a>Long Short-term Memory (LSTM)</h2><p>Of course the RNN can be deep and complex. some common rnns are Elman Network and Jordan Network. 1. Elman store the value of neuron and Jordan store the value of output (maybe better performance). Bidirectional RNN is also used to see the whole sentance.<br><img src="https://i.imgur.com/3Om00RP.png" alt="Bidirectional RNN"><br>The most common used RNN is called long short-term memory.</p>
 <p>下面学习一下代码， from 莫烦pytorch教程， 分类：<br>图片的时间顺序，从上面看到下面：<br>从第一行的pixel知道最后一行的pixel，line by line</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">epoch = <span class="number">1</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">time_step = <span class="number">28</span> </span><br><span class="line">input_size = <span class="number">28</span></span><br><span class="line"><span class="comment"># for mnist, 28 pixel for each line is 28, therefore the time_step and input size are both 28.</span></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br></pre></td></tr></table></figure>
 
