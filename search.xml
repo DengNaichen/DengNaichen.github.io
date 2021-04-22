@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode with Go</title>
-    <url>/2021/04/10/Leetcode-with-Go/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>Programming</tag>
-        <tag>Go</tag>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode with Python</title>
     <url>/2021/04/06/Leetcode-with-Python/</url>
     <content><![CDATA[<p>Leetcode python 刷题记录，日更</p>
@@ -1197,27 +1187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>对抗生成神经网络</title>
-    <url>/2021/04/15/%E5%AF%B9%E6%8A%97%E7%94%9F%E6%88%90%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h2 id="Introduction-to-GANs"><a href="#Introduction-to-GANs" class="headerlink" title="Introduction to GANs"></a>Introduction to GANs</h2><h3 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h3><p>GANs 主要由两个部分完成</p>
-<ol>
-<li>定义一个模型来作为生成器（图三中蓝色部分Generator），能够输入一个向量，输出手写数字大小的像素图像。</li>
-<li>定义一个分类器来作为判别器（图三中红色部分Discriminator）用来判别图片是真的还是假的（或者说是来自数据集中的还是生成器中生成的）。这里的输出就是一个概率，real or fake。</li>
-</ol>
-<p>如何训练？</p>
-<ol>
-<li>我们一般想要生成器需要输入一个噪音，主要是为了保证生成的图片都是不一样的（当然会有包括一些信息，比如生成1还是9）但是在这里先不做考虑，只要输出可以骗过discriminator就好。</li>
-<li></li>
-</ol>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># generator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        z_dim: the dimension of the noise vector </span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix)</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">        here the generator is the simplest FNN</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, z_dim=<span class="number">10</span>, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Generator, self).__init__()</span><br><span class="line">        self.gen = nn.Sequential(</span><br><span class="line">            <span class="comment"># input layer</span></span><br><span class="line">            <span class="comment"># z_dim is the dimension of noise vector</span></span><br><span class="line">            self.get_generator_block(z_dim, hidden_dim),</span><br><span class="line">            <span class="comment"># hidden layers</span></span><br><span class="line">            self.get_generator_block(hidden_dim, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">2</span>, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            self.get_generator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">8</span>),</span><br><span class="line">            <span class="comment"># output layer, the output is matrix (vector)</span></span><br><span class="line">            <span class="comment"># output dimension is im_dim</span></span><br><span class="line">            nn.Linear(hidden_dim * <span class="number">8</span>, im_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param input_dim: scalar</span></span><br><span class="line"><span class="string">        :param output_dim: scalar</span></span><br><span class="line"><span class="string">        :return: a single layer of generator</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            <span class="comment"># linear function</span></span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> not sure why need a batch normalization here</span></span><br><span class="line">            <span class="comment"># see detail here:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d</span></span><br><span class="line">            nn.BatchNorm1d(output_dim),</span><br><span class="line">            <span class="comment"># activation function</span></span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> inplace = True?</span></span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, noise</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Function for completing a forward pass of the generator: Given a noise tensor,</span></span><br><span class="line"><span class="string">        returns generated images.</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            noise: a noise tensor with dimensions (n_samples, z_dim)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen(noise)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_gen</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            the sequential model</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.gen</span><br></pre></td></tr></table></figure>
-<h4 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># discriminator.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Discriminator</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Generator Class</span></span><br><span class="line"><span class="string">    Values:</span></span><br><span class="line"><span class="string">        im_dim: the dimension of the images (matrix), input</span></span><br><span class="line"><span class="string">        hidden_dim: the inner dimension, a scalar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, im_dim=<span class="number">15</span>, hidden_dim=<span class="number">16</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Discriminator, self).__init__()</span><br><span class="line">        self.disc = nn.Sequential(</span><br><span class="line">            self.get_discriminator_block(im_dim, hidden_dim * <span class="number">4</span>),</span><br><span class="line">            <span class="comment"># hidden layer, activation function is leak relu.</span></span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">4</span>, hidden_dim * <span class="number">2</span>),</span><br><span class="line">            self.get_discriminator_block(hidden_dim * <span class="number">2</span>, hidden_dim),</span><br><span class="line">            <span class="comment"># output layer, output is 1, which is a probability of real or fake.</span></span><br><span class="line">            nn.Linear(hidden_dim, <span class="number">1</span>),</span><br><span class="line">            <span class="comment"># the sigmoid function is a build-in function for nn.BCEWithLogitsLoss().</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_discriminator_block</span>(<span class="params">self, input_dim, output_dim</span>):</span></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, output_dim),</span><br><span class="line">            <span class="comment"># see detail at:</span></span><br><span class="line">            <span class="comment"># https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear</span></span><br><span class="line">            <span class="comment"># for a single layer without activation function.</span></span><br><span class="line">            nn.LeakyReLU(<span class="number">0.2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">            <span class="comment"># slope for x &lt; 0 is 0.2</span></span><br><span class="line">            <span class="comment"># inplace = True: inplace=True means that it will modify the input directly, without allocating any</span></span><br><span class="line">            <span class="comment"># additional output. It can sometimes slightly decrease the memory usage.</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, image</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc(image)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_disc</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.disc</span><br></pre></td></tr></table></figure>
-<h4 id="util-functions"><a href="#util-functions" class="headerlink" title="util functions"></a>util functions</h4><h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4>]]></content>
-      <tags>
-        <tag>programming💻</tag>
-        <tag>pytorch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lecture 7 recursion</title>
     <url>/2021/04/10/Lecture7%20recursion/</url>
     <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">video</a></p>
@@ -1242,32 +1211,6 @@
 <li>verify the </li>
 </ol>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-      <categories>
-        <category>cs61a🙋</category>
-      </categories>
-      <tags>
-        <tag>python🐍</tag>
-        <tag>programming💻</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lecture 8 Tree Recursion</title>
-    <url>/2021/04/17/Lecture-8-Tree-Recursion/</url>
-    <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=gXw6_D_B7xQ&list=PL6BsET-8jgYUaHO4eXAJD2v53HYAdFNk-">video</a></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>]]></content>
-      <categories>
-        <category>cs61a🙋</category>
-      </categories>
-      <tags>
-        <tag>python🐍</tag>
-        <tag>programming💻</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lecture 9 Containers</title>
-    <url>/2021/04/17/Lecture-9-Containers/</url>
-    <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=VRFqir6dTrg&list=PL6BsET-8jgYU1eWkdF45L1Pce1d4DxJcR">video</a></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2>]]></content>
       <categories>
         <category>cs61a🙋</category>
       </categories>
@@ -1334,14 +1277,5 @@
       <tags>
         <tag>programming💻</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>aircraft game</title>
-    <url>/2021/04/18/aircraft-game/</url>
-    <content><![CDATA[<p>python 简明教程的第一个项目，外星人入侵，主要是学习一下怎么重构代码。</p>
-<h2 id="create-conda-environment"><a href="#create-conda-environment" class="headerlink" title="create conda environment"></a>create conda environment</h2><p>create conda environment<br>install <code>pygame</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda create --name game python&#x3D;3.6</span><br><span class="line">conda activate game</span><br><span class="line">python3 -m pip install -U pygame --user</span><br></pre></td></tr></table></figure>
-
-<h2 id="Create-the-aircraft"><a href="#Create-the-aircraft" class="headerlink" title="Create the aircraft"></a>Create the aircraft</h2>]]></content>
   </entry>
 </search>
