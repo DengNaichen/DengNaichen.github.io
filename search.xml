@@ -1268,4 +1268,30 @@
         <tag>programming💻</tag>
       </tags>
   </entry>
+  <entry>
+    <title>一些机器学习数据预处理的编码方法</title>
+    <url>/2021/04/22/%E4%B8%80%E4%BA%9B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pytorch save model</title>
+    <url>/2021/04/29/pytorch-save-model/</url>
+    <content><![CDATA[<p>怎么保存训练好的pytorch模型？</p>
+<p>以前图省事直接就是</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.save(model, path)</span><br><span class="line">check_point = torch.load(path)</span><br></pre></td></tr></table></figure>
+
+<p>以前直接用<code>base</code>环境的torch ，版本是1.6， 这样做没啥问题，但是也感觉怪怪的。今天在pycharm上面运行，没法用base环境，虚拟环境用的版本号是1.3.1(为什么更低我也不知道哈哈哈)，然后上面的方法不能用了，但是找到了一个更有逻辑的方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># save torch</span></span><br><span class="line"><span class="comment"># save the torch state(parameters) in a file</span></span><br><span class="line">torch.save(&#123;<span class="string">&#x27;state_dict&#x27;</span>: gen.state_dict()&#125;, <span class="string">&#x27;gen_one_hot.pth.tar&#x27;</span>)</span><br><span class="line"><span class="comment"># load the model</span></span><br><span class="line"><span class="comment"># create a new model, same stracture as the previous one</span></span><br><span class="line">model = Generator(z_dim, im_dim=<span class="number">60</span>, hidden_dim=<span class="number">16</span>).to(device)</span><br><span class="line"><span class="comment"># get the state from stored file</span></span><br><span class="line">checkpoint = torch.load(<span class="string">&#x27;gen_one_hot.pth.tar&#x27;</span>)</span><br><span class="line"><span class="comment"># load the state to the new model</span></span><br><span class="line">model.load_state_dict(checkpoint[<span class="string">&#x27;state_dict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>哈哈哈感觉复杂了一点所以对劲了一点？？？</p>
+<p>哈哈哈哈有毒哈哈哈</p>
+<p>2021/4/29</p>
+]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
 </search>

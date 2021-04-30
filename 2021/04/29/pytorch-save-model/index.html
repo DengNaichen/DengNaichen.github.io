@@ -20,23 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="video 最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。这是我上这门课的动力，8多说了，开🐛。">
+  <meta name="description" content="怎么保存训练好的pytorch模型？ 以前图省事直接就是 12torch.save(model, path)check_point &#x3D; torch.load(path)  以前直接用base环境的torch ，版本是1.6， 这样做没啥问题，但是也感觉怪怪的。今天在pycharm上面运行，没法用base环境，虚拟环境用的版本号是1.3.1(为什么更低我也不知道哈哈哈)，然后上面的方法不能用了，但是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lecture 7 recursion">
-<meta property="og:url" content="http://example.com/2021/04/10/Lecture7%20recursion/index.html">
+<meta property="og:title" content="pytorch save model">
+<meta property="og:url" content="http://example.com/2021/04/29/pytorch-save-model/index.html">
 <meta property="og:site_name" content="邓乃诚的博客">
-<meta property="og:description" content="video 最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。这是我上这门课的动力，8多说了，开🐛。">
+<meta property="og:description" content="怎么保存训练好的pytorch模型？ 以前图省事直接就是 12torch.save(model, path)check_point &#x3D; torch.load(path)  以前直接用base环境的torch ，版本是1.6， 这样做没啥问题，但是也感觉怪怪的。今天在pycharm上面运行，没法用base环境，虚拟环境用的版本号是1.3.1(为什么更低我也不知道哈哈哈)，然后上面的方法不能用了，但是">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.imgur.com/POdSmj1.png">
-<meta property="article:published_time" content="2021-04-10T20:20:13.000Z">
-<meta property="article:modified_time" content="2021-04-17T01:02:03.877Z">
+<meta property="article:published_time" content="2021-04-30T03:33:41.000Z">
+<meta property="article:modified_time" content="2021-04-30T03:53:20.136Z">
 <meta property="article:author" content="Naicheng Deng">
-<meta property="article:tag" content="python🐍">
 <meta property="article:tag" content="programming💻">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/POdSmj1.png">
 
-<link rel="canonical" href="http://example.com/2021/04/10/Lecture7%20recursion/">
+<link rel="canonical" href="http://example.com/2021/04/29/pytorch-save-model/">
 
 
 <script id="page-configurations">
@@ -49,7 +46,7 @@
   };
 </script>
 
-  <title>Lecture 7 recursion | 邓乃诚的博客</title>
+  <title>pytorch save model | 邓乃诚的博客</title>
   
 
 
@@ -200,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/Lecture7%20recursion/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/pytorch-save-model/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
@@ -213,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Lecture 7 recursion
+          pytorch save model
         </h1>
 
         <div class="post-meta">
@@ -222,24 +219,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-04-10 16:20:13" itemprop="dateCreated datePublished" datetime="2021-04-10T16:20:13-04:00">2021-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-16 21:02:03" itemprop="dateModified" datetime="2021-04-16T21:02:03-04:00">2021-04-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61a%F0%9F%99%8B/" itemprop="url" rel="index"><span itemprop="name">cs61a🙋</span></a>
-                </span>
+              <time title="Created: 2021-04-29 23:33:41 / Modified: 23:53:20" itemprop="dateCreated datePublished" datetime="2021-04-29T23:33:41-04:00">2021-04-29</time>
             </span>
 
           <br>
@@ -248,7 +230,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>751</span>
+              <span>674</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -267,28 +249,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">video</a></p>
-<p>最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。<br>这是我上这门课的动力，8多说了，开🐛。</p>
- <span id="more"></span>
-<h2 id="Recursive-Function"><a href="#Recursive-Function" class="headerlink" title="Recursive Function:"></a>Recursive Function:</h2><p> Definition: A function is called recursive if the body of that function calls itself, wither directly or indirectly.</p>
-<p> The Anatomy of a recursive function</p>
-<ol>
-<li>the <code>def</code> statement header is similar to other functions</li>
-<li>conditional statements check for base case</li>
-<li>base cases are evaluated without recursive calls</li>
-<li>recursive case are evaluated with recursive calls</li>
-</ol>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span>(<span class="params">n</span>):</span></span><br><span class="line">   <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">       <span class="keyword">return</span> n * fact(n-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p> Environment Diagrams</p>
-<h2 id="iteration-vs-recursive"><a href="#iteration-vs-recursive" class="headerlink" title="iteration vs. recursive"></a>iteration vs. recursive</h2> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># using while![](https://i.imgur.com/POdSmj1.png)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact_iter</span>(<span class="params">n</span>):</span></span><br><span class="line">   total, k = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">   <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">       total, k = total * k, k+<span class="number">1</span></span><br><span class="line">   <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
-<p> <img src="https://i.imgur.com/POdSmj1.png"></p>
-<h2 id="Check-recursion"><a href="#Check-recursion" class="headerlink" title="Check recursion"></a>Check recursion</h2><ol>
-<li>verify the base case</li>
-<li>treat fact as functional abstraction</li>
-<li>assume that <code>fact(n-1)</code> is correct</li>
-<li>verify the </li>
-</ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+        <p>怎么保存训练好的pytorch模型？</p>
+<p>以前图省事直接就是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.save(model, path)</span><br><span class="line">check_point = torch.load(path)</span><br></pre></td></tr></table></figure>
+
+<p>以前直接用<code>base</code>环境的torch ，版本是1.6， 这样做没啥问题，但是也感觉怪怪的。今天在pycharm上面运行，没法用base环境，虚拟环境用的版本号是1.3.1(为什么更低我也不知道哈哈哈)，然后上面的方法不能用了，但是找到了一个更有逻辑的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># save torch</span></span><br><span class="line"><span class="comment"># save the torch state(parameters) in a file</span></span><br><span class="line">torch.save(&#123;<span class="string">&#x27;state_dict&#x27;</span>: gen.state_dict()&#125;, <span class="string">&#x27;gen_one_hot.pth.tar&#x27;</span>)</span><br><span class="line"><span class="comment"># load the model</span></span><br><span class="line"><span class="comment"># create a new model, same stracture as the previous one</span></span><br><span class="line">model = Generator(z_dim, im_dim=<span class="number">60</span>, hidden_dim=<span class="number">16</span>).to(device)</span><br><span class="line"><span class="comment"># get the state from stored file</span></span><br><span class="line">checkpoint = torch.load(<span class="string">&#x27;gen_one_hot.pth.tar&#x27;</span>)</span><br><span class="line"><span class="comment"># load the state to the new model</span></span><br><span class="line">model.load_state_dict(checkpoint[<span class="string">&#x27;state_dict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>哈哈哈感觉复杂了一点所以对劲了一点？？？</p>
+<p>哈哈哈哈有毒哈哈哈</p>
+<p>2021/4/29</p>
+
     </div>
 
     
@@ -297,7 +268,6 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python%F0%9F%90%8D/" rel="tag"># python🐍</a>
               <a href="/tags/programming%F0%9F%92%BB/" rel="tag"># programming💻</a>
           </div>
 
@@ -307,13 +277,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/" rel="prev" title="这本书能让你戒烟">
-      <i class="fa fa-chevron-left"></i> 这本书能让你戒烟
+    <a href="/2021/04/22/%E4%B8%80%E4%BA%9B%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%B3%95/" rel="prev" title="一些机器学习数据预处理的编码方法">
+      <i class="fa fa-chevron-left"></i> 一些机器学习数据预处理的编码方法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/12/%E7%A8%80%E7%BC%BA/" rel="next" title="稀缺">
-      稀缺 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -372,7 +339,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recursive-Function"><span class="nav-number">1.</span> <span class="nav-text">Recursive Function:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iteration-vs-recursive"><span class="nav-number">2.</span> <span class="nav-text">iteration vs. recursive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-recursion"><span class="nav-number">3.</span> <span class="nav-text">Check recursion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
