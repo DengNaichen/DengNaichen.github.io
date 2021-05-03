@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-02 14:38:53 / Modified: 22:50:57" itemprop="dateCreated datePublished" datetime="2021-05-02T14:38:53-04:00">2021-05-02</time>
+              <time title="Created: 2021-05-02 14:38:53 / Modified: 23:04:36" itemprop="dateCreated datePublished" datetime="2021-05-02T14:38:53-04:00">2021-05-02</time>
             </span>
 
           <br>
@@ -225,7 +225,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>887</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -259,7 +259,10 @@
 <p>Then we use the critic to get the score of mixed image (get 8 scalars)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mixed_scores = crit(mixed_images)</span><br></pre></td></tr></table></figure>
 
-<p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$</p>
+<p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
+<blockquote>
+<p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$</p>
+</blockquote>
 
       
     </div>
@@ -1206,7 +1209,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">85k</span>
+    <span title="Symbols count total">86k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
