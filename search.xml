@@ -1346,14 +1346,17 @@
 <p>$Q_{1} = 2$, $Q_{2} = 5$, $Q_{3} = 3$, $Q_{4} = 1$,</p>
 <p>To match up Q and P, we need to calculate the shortest distance, which is given by $\delta_{i+1} = \delta{i} + Q{i} - P{i}$</p>
 <p>Let<br>$\delta_{0} = 0$,</p>
-<p>$\delta_{1} = 2 - 1 = 1$, </p>
-<p>$\delta_{2} = 1 + 2 = 3$， </p>
-<p>$\delta_{3} = -1 + 3 = 2$， </p>
+<p>$\delta_{1} = 2 - 1 = 1$,</p>
+<p>$\delta_{2} = 1 + 2 = 3$，</p>
+<p>$\delta_{3} = -1 + 3 = 2$，</p>
 <p>$\delta_{4} = -1 + 2 = 1$</p>
 <p>Finally, the Earth move distance $W = \sum |\delta_{i}| = 7$. In wgan, we use the EM distance as penalty, first we mix up the real and fake images with random weight epsilon. For example, if the current batch size is 8, the size of epsilon is (8,1,1,1), len(mixed_image) will also be 8.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">epsilon = torch.rand(<span class="built_in">len</span>(real), <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, device=device, requires_grad=<span class="literal">True</span>)</span><br><span class="line">mixed_images = real * epsilon + fake * (<span class="number">1</span> - epsilon)</span><br></pre></td></tr></table></figure>
+
 <p>Then we use the critic to get the score of mixed image (get 8 scalars)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mixed_scores = crit(mixed_images)</span><br></pre></td></tr></table></figure>
+
+<p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$</p>
 ]]></content>
       <tags>
         <tag>programming💻</tag>
