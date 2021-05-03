@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-02 14:38:53 / Modified: 23:04:36" itemprop="dateCreated datePublished" datetime="2021-05-02T14:38:53-04:00">2021-05-02</time>
+              <time title="Created: 2021-05-02 14:38:53 / Modified: 23:09:07" itemprop="dateCreated datePublished" datetime="2021-05-02T14:38:53-04:00">2021-05-02</time>
             </span>
 
           <br>
@@ -225,7 +225,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.2k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
 
 <p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
 <blockquote>
-<p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$</p>
+<p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$,通过减去他✖️step size（lr），我们大概就可以找出在这个参数空间中，往那一个方向移动参数，可以minimize the loss value for given input. 行了我又可以了，但是下面这个又给我整不会了。这里的gradient，是针对loss function的，很好理解。但是WGAN中也要求gradient，却是针对critic的，这个玩意儿有什么数学意义嘛？</p>
 </blockquote>
 
       
