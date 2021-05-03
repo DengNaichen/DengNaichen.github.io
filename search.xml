@@ -1344,9 +1344,9 @@
     <content><![CDATA[<h2 id="Earth-Mover-Distance-EM-distance"><a href="#Earth-Mover-Distance-EM-distance" class="headerlink" title="Earth-Mover Distance (EM distance)"></a>Earth-Mover Distance (EM distance)</h2><p>The distance between two distribution, for example we have two distribution:</p>
 <p>$P_{1} = 1$, $P_{2} = 3$, $P_{3} = 4$, $P_{4} = 2$</p>
 <p>$Q_{1} = 2$, $Q_{2} = 5$, $Q_{3} = 3$, $Q_{4} = 1$,</p>
-<p>To match up Q and P, we need to calculate the shortest distance, which is given by $\delta{i+1} = \delta{i} + Q{i} - P{i}$</p>
-<p>Let $\delta_{0} = 0$,</p>
-<p>$\delta_{1} = Q_{1} - P_{1} = 1$, </p>
+<p>To match up Q and P, we need to calculate the shortest distance, which is given by $\delta_{i+1} = \delta{i} + Q{i} - P{i}$</p>
+<p>Let<br>$\delta_{0} = 0$,</p>
+<p>$\delta_{1} = 2 - 1 = 1$, </p>
 <p>$\delta_{2} = 1 + 2 = 3$， </p>
 <p>$\delta_{3} = -1 + 3 = 2$， </p>
 <p>$\delta_{4} = -1 + 2 = 1$</p>
