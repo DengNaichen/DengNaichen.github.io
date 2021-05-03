@@ -1321,7 +1321,7 @@
 <p> 总之就是求每个pixel的gradient，我他妈手撸过神经网络的人居然会忘记mse的gradient怎么求，我还真忘了，我完了。贴个网址有空看看：<a href="https://math.stackexchange.com/questions/1962877/compute-the-gradient-of-mean-square-error">https://math.stackexchange.com/questions/1962877/compute-the-gradient-of-mean-square-error</a></p>
 </li>
 <li><p>get penalty</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_penalty</span>(<span class="params">gradient</span>):</span></span><br><span class="line">    <span class="comment"># 因为上一个gradient的shape是image的shape</span></span><br><span class="line">    <span class="comment">#比如（256,1,28,28）这个256是branch size， </span></span><br><span class="line">    <span class="comment">#我得把他变成plain的，就长度，然后-1, each row capture one image</span></span><br><span class="line">    gradient = gradient.view(<span class="built_in">len</span>(gradient), -<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># Calculate the magnitude of every row(其实就是绝对值了）</span></span><br><span class="line">    gradient_norm = gradient.norm(<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 这不就是ground truth是1的MSE吗？这就能当penalty了？</span></span><br><span class="line">    penalty = torch.mean((gradient_norm -<span class="number">1</span>)**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> penalty</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_penalty</span>(<span class="params">gradient</span>):</span></span><br><span class="line">    <span class="comment"># 因为上一个gradient的shape是image的shape</span></span><br><span class="line">    <span class="comment">#比如（256,1,28,28）这个256是branch size， </span></span><br><span class="line">    <span class="comment">#我得把他变成plain的，就长度，然后-1, each row capture one image</span></span><br><span class="line">    gradient = gradient.view(<span class="built_in">len</span>(gradient), -<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># Calculate the magnitude of every row(其实就是绝对值了）</span></span><br><span class="line">    gradient_norm = gradient.norm(<span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 这不就是ground turth是1的MSE吗？这就能当penalty了？</span></span><br><span class="line">    penalty = torch.mean((gradient_norm -<span class="number">1</span>)**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> penalty</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>Get Losses</p>
@@ -1360,6 +1360,31 @@
 <blockquote>
 <p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$,通过减去他✖️step size（lr），我们大概就可以找出在这个参数空间中，往那一个方向移动参数，可以minimize the loss value for given input. 行了我又可以了，但是下面这个又给我整不会了。这里的gradient，是针对loss function的，很好理解。但是WGAN中也要求gradient，却是针对critic的，这个玩意儿有什么数学意义嘛？</p>
 </blockquote>
+<p>好了我又可以了，为什么这里我们需要求梯度：<br>Wloss works 的一个必要条件是，Critic C(x) has to be continues and the gradients on each points should between -1 and 1, which is 1-Lipschitz continous. 就比如$y = x^2$ is not 1-L continous, and $y = \sin (x) $ satisfies that condition. A penalty term is needed to enforce critic satisfy 1-L continues. <code>torch.autograd.grad</code> can give us the gradient for given input and output</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gradient = torch.autograd.grad（inputs=mixed_images,</span><br><span class="line">                                            outputs=mixed_scores,</span><br><span class="line">                                            grad_outputs=torch.ones_like(mixed_scores), </span><br><span class="line">                                            create_graph=<span class="literal">True</span>,</span><br><span class="line">                                            retain_graph=<span class="literal">True</span>,)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Assume the gradients is for a single image. Therefore the shape of gradient and image is exactly same. and also we assume the image is already flatten, which means the image could be represented by a single row with length is equal to the number of pixel. Then the gradient can be used to calculate penalty term:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gradient_norm = gradient.norm(<span class="number">2</span>, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>这里我们用到了L2 norm， which Euclid norm, 就是向量元素绝对值的平方再开方，<br>    $$||x|| = \sqrt{\sum{i = 1}{m} x^2}$$</p>
+</blockquote>
+</blockquote>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Batch Normalization</title>
+    <url>/2021/05/02/Batch-Normalization/</url>
+    <content><![CDATA[<p>复习一下batch normalization，或者说学习一下，好像从来没学明白过。</p>
+ <span id="more"></span>
+<h2 id="不用batch-normalization"><a href="#不用batch-normalization" class="headerlink" title="不用batch normalization"></a>不用batch normalization</h2><p> 之前我有过一个拟合函数，优化自由能的项目，因为数据量非常少，最多的时候也只有1000个点，所以没有重点看这玩意儿。当时那个网络结构非常简单，就是一个输入一个输出，由于用的是vector，所以所有的输入可以用一个向量全部表示出来，就是：
+ </p>
 ]]></content>
       <tags>
         <tag>programming💻</tag>
