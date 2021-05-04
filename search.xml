@@ -1415,4 +1415,16 @@
         <tag>programming💻</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Mini-batch</title>
+    <url>/2021/05/04/Mini-batch/</url>
+    <content><![CDATA[<p>复习一下Mini-Batch</p>
+<span id="more"></span>
+
+<p>Vectorization could help us to speed up the calculation by avoid loop. But the technique is base only the the computational level. If we want to training on the whole batch. Assume we have a 10,000 example, each example with dimensions 60, the input matrix will be [60, 10,000] with each column represents a image. The output will be [1, 10,000]. We update parameters once each epoch. Which means that, for each epoch, we need to do several huge matrix multiplication to get the output, then calculate the gradient for each element in the output vector, and update all parameters, <strong>once</strong>. That extremly slows down the optimization because each epoch will spend lots of time.<br>By mini-batch technique. We can separate the huge matrix into several matrix. For above example, </p>
+]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
 </search>
