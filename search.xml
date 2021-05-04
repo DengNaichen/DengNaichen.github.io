@@ -1353,17 +1353,19 @@
 <p>$\delta_{2} = 1 + 2 = 3$，</p>
 <p>$\delta_{3} = -1 + 3 = 2$，</p>
 <p>$\delta_{4} = -1 + 2 = 1$</p>
-<p>Finally, the Earth move distance $W = \sum |\delta_{i}| = 7$. In wgan, we use the EM distance as penalty, first we mix up the real and fake images with random weight epsilon. For example, if the current batch size is 8, the size of epsilon is (8,1,1,1), len(mixed_image) will also be 8.</p>
+<p>Finally, the Earth move distance $W = \sum |\delta_{i}| = 7$. Above equations set can be simplified to a single equation:</p>
+<p>$$Em = \sum (Q_{i}- P_{i})$$</p>
+<p>In deep learning algorithm, we can represent above equation as<br>$$Loss = \drac{1}{m} \sum (C(x) - C(G(z)))$$</p>
+<h2 id="Get-the-gradient-penalty"><a href="#Get-the-gradient-penalty" class="headerlink" title="Get the gradient penalty"></a>Get the gradient penalty</h2><p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
+<blockquote>
+<p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$,通过减去他✖️step size（lr），我们大概就可以找出在这个参数空间中，往那一个方向移动参数，可以minimize the loss value for given input. 行了我又可以了，但是下面这个又给我整不会了。这里的gradient，是针对loss function的，很好理解。但是WGAN中也要求gradient，却是针对critic的，这个玩意儿有什么数学意义嘛？</p>
+</blockquote>
+<p>好了我又可以了，为什么这里我们需要求梯度：<br>Wloss works 的一个必要条件是，Critic C(x) has to be continues and the gradients on each points should between -1 and 1, which is 1-Lipschitz continous. 就比如$y = x^2$ is not 1-L continous, and $y = \sin (x) $ satisfies that condition. A penalty term is needed to enforce critic satisfy 1-L continues. <code>torch.autograd.grad</code> can give us the gradient for given input and output.<br>First we need to mix the fake and real image:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">epsilon = torch.rand(<span class="built_in">len</span>(real), <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, device=device, requires_grad=<span class="literal">True</span>)</span><br><span class="line">mixed_images = real * epsilon + fake * (<span class="number">1</span> - epsilon)</span><br></pre></td></tr></table></figure>
 
 <p>Then we use the critic to get the score of mixed image (get 8 scalars)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mixed_scores = crit(mixed_images)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Get-the-gradient-penalty"><a href="#Get-the-gradient-penalty" class="headerlink" title="Get the gradient penalty"></a>Get the gradient penalty</h2><p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
-<blockquote>
-<p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$,通过减去他✖️step size（lr），我们大概就可以找出在这个参数空间中，往那一个方向移动参数，可以minimize the loss value for given input. 行了我又可以了，但是下面这个又给我整不会了。这里的gradient，是针对loss function的，很好理解。但是WGAN中也要求gradient，却是针对critic的，这个玩意儿有什么数学意义嘛？</p>
-</blockquote>
-<p>好了我又可以了，为什么这里我们需要求梯度：<br>Wloss works 的一个必要条件是，Critic C(x) has to be continues and the gradients on each points should between -1 and 1, which is 1-Lipschitz continous. 就比如$y = x^2$ is not 1-L continous, and $y = \sin (x) $ satisfies that condition. A penalty term is needed to enforce critic satisfy 1-L continues. <code>torch.autograd.grad</code> can give us the gradient for given input and output</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gradient = torch.autograd.grad（inputs=mixed_images,</span><br><span class="line">                                outputs=mixed_scores,</span><br><span class="line">                                grad_outputs=torch.ones_like(mixed_scores),</span><br><span class="line">                                create_graph=<span class="literal">True</span>,</span><br><span class="line">                                retain_graph=<span class="literal">True</span>,)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
 <p>Assume the gradients is for a single image. Therefore the shape of gradient and image is exactly same. and also we assume the image is already flatten, which means the image could be represented by a single row with length is equal to the number of pixel. Then the gradient can be used to calculate penalty term:</p>
@@ -1377,10 +1379,12 @@
 <h2 id="Put-all-thing-togather"><a href="#Put-all-thing-togather" class="headerlink" title="Put all thing togather"></a>Put all thing togather</h2><p>Same as the BCE loss function, W loss is a ninimax game as well, which the loss function is represented by minimax equantion:</p>
 <p>$$MinMax (C(x) - C(G(z)))$$,</p>
 <p>where z is the random noise and x is the real input image. the value inside larger parantthese represent the Earth-Mover distance between the real and generating image. Generator wants to minimize the value to foll the critic and critic wish to maximum the value to avoid be fooled. Therefore the loss value of genrator and critic is given by:</p>
-<p>//TODO: 这里有点不懂。应该看了训练过程就懂了吧</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># generator loss</span></span><br><span class="line">gen_loss = -<span class="number">1.</span> * torch.mean(crit_fake_pred)</span><br></pre></td></tr></table></figure>
 
+<p>Again，the goal of generator is to maximum the score given by critic. Therefore the loss function of generator is quite straightforward, for a single image， score = C(G(X)), gradient decent algrithm is used to optimize the score so a negative sign is need here.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># critic loss</span></span><br><span class="line">crit_loss = torch.mean(crit_fake_pred) - torch.mean(crit_real_pred) + c_lambda * gp</span><br></pre></td></tr></table></figure>
+
+<p>So basically, we are not calculating the EM distance for batch of score getting for critic, instant of the EM distance for pixels of a single image. The idea is consistent with BCE loss. In BCE loss, we put score(output) into the loss function as well. However the wired is that, I thought the output should be a probability of image is real or fake. So the output between 0 and 1 is righteous. One advantage of WGAN is than we don’t need to restrict the output with sigmoid function. So what’s the mathematical meaning of output?</p>
 ]]></content>
       <tags>
         <tag>programming💻</tag>
