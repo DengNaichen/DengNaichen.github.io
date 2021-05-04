@@ -28,7 +28,7 @@
 <meta property="og:description" content="Rough Understanding of WGAN">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-02T18:38:53.000Z">
-<meta property="article:modified_time" content="2021-05-04T19:08:55.835Z">
+<meta property="article:modified_time" content="2021-05-04T19:09:11.314Z">
 <meta property="article:author" content="Naicheng Deng">
 <meta property="article:tag" content="programming💻">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-04 15:08:55" itemprop="dateModified" datetime="2021-05-04T15:08:55-04:00">2021-05-04</time>
+                <time title="Modified: 2021-05-04 15:09:11" itemprop="dateModified" datetime="2021-05-04T15:09:11-04:00">2021-05-04</time>
               </span>
 
           <br>
@@ -269,7 +269,8 @@
 <p>$\delta_{4} = -1 + 2 = 1$</p>
 <p>Finally, the Earth move distance $W = \sum |\delta_{i}| = 7$. Above equations set can be simplified to a single equation:</p>
 <p>$$Em = \sum (Q_{i}- P_{i})$$</p>
-<p>In deep learning algorithm, we can represent above equation as<br>$$Loss = \dfrac{1}{m} \sum ^{m}_{i=0} (C(x) - C(G(z)))$$</p>
+<p>In deep learning algorithm, we can represent above equation as</p>
+<p>$$Loss = \dfrac{1}{m} \sum ^{m}_{i=0} (C(x) - C(G(z)))$$</p>
 <h2 id="Get-the-gradient-penalty"><a href="#Get-the-gradient-penalty" class="headerlink" title="Get the gradient penalty"></a>Get the gradient penalty</h2><p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
 <blockquote>
 <p>ASIDE: 我他妈写着写着居然忘了为啥要梯度下降。好了喂完了jo太郎我又想起来了。我们之所以需要梯度下降，是因为所谓的梯度是损失函数对网络parameters的梯度。一般来讲loss function represent the distance between two distribution: real output and target. 这个距离as smaller as better. 我们求出一个梯度<br>$$\dfrac{\partial L}{\partial \theta}$$<br>通过减去他✖️step size（lr），我们大概就可以找出在这个参数空间中，往那一个方向移动参数，可以minimize the loss value for given input. 行了我又可以了，但是下面这个又给我整不会了。这里的gradient，是针对loss function的，很好理解。但是WGAN中也要求gradient，却是针对critic的，这个玩意儿有什么数学意义嘛？</p>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="复习一下batch normalization，或者说学习一下，好像从来没学明白过。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-03T03:38:46.000Z">
-<meta property="article:modified_time" content="2021-05-04T19:08:48.836Z">
+<meta property="article:modified_time" content="2021-05-04T19:09:56.975Z">
 <meta property="article:author" content="Naicheng Deng">
 <meta property="article:tag" content="programming💻">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-04 15:08:48" itemprop="dateModified" datetime="2021-05-04T15:08:48-04:00">2021-05-04</time>
+                <time title="Modified: 2021-05-04 15:09:56" itemprop="dateModified" datetime="2021-05-04T15:09:56-04:00">2021-05-04</time>
               </span>
 
           <br>
@@ -263,7 +263,7 @@
 <p>对于sigmoid和tanh函数，我们希望x的分布更接近0附近，因为在0附近activation function的slope更大（确保神经网络不会饱和），更容易表现出不同的分布特征，所以我们希望x的平均值为0且标准差为1：</p>
 <p>$$\mu_{B} = \dfrac{1}{m} \sum ^{m}<em>{i=0} x</em>{i} $$</p>
 <p>$$\sigma_{B}^2 = \dfrac{1}{m} \sum ^{m}<em>{i=0}(x</em>{i} - \mu_{B}) ^ 2$$</p>
-<p>where the square is element wise. and following sqrt and device are element-wise as well.</p>
+<p>where the square is element wise. and following sqrt and devision are element-wise as well.</p>
 <p>$$\hat{x_{i}} = \dfrac{x_{i} - \mu_{b}}{\sqrt{\sigma_{B} + \epsilon}} $$<br>where $\epsilon$ is a very small constant in case the denominator is equal to 0. </p>
 <p>到这里我们就已经完成了标准化(Normalization), 但是如果有些数据不需要标准化怎么办，这里我们引入两个可以学习的参数，$\gamma$ and $\beta$, where are scale and shift parameters, respectively. 这样神经网络可以慢慢的学出来，前面的normalization是不是真的起到了作用，如果没有，就通过turning scale and shift 来抵消一些影响。</p>
 <p>Note：这里对于sigmoid和tanh来说是很好理解的，但是relu就有点奇怪，不过根据实验的结果，BN对激活函数是Relu也非常重要，可以参考这个<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=p9H72kadx8U">视频</a></p>
