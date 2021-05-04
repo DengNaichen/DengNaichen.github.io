@@ -1399,10 +1399,7 @@
 
 <h2 id="为什么要用batch-normalization？"><a href="#为什么要用batch-normalization？" class="headerlink" title="为什么要用batch normalization？"></a>为什么要用batch normalization？</h2><p>对于全连接神经网络，输入为u，经过线性层，我们得到：</p>
 <p>$$x = Wu + b$$</p>
-<p>对于sigmoid和tanh函数，我们希望x的分布更接近0附近，因为在0附近activation function的slope更大（确保神经网络不会饱和），更容易表现出不同的分布特征，所以我们希望x的平均值为0且标准差为1：</p>
-<p>$$\mu_{B} = \dfrac{1}{m} \sum ^{m}<em>{i=0} x</em>{i} $$</p>
-<p>$$\sigma_{B}^2 = \dfrac{1}{m} \sum ^{m}<em>{i=0}(x</em>{i} - \mu_{B}) ^ 2$$</p>
-<p>where the square is element wise. and following sqrt and devision are element-wise as well.</p>
+<p>对于sigmoid和tanh函数，我们希望x的分布更接近0附近，因为在0附近activation function的slope更大（确保神经网络不会饱和），更容易表现出不同的分布特征，所以我们希望x的平均值为0且标准差为1：<br>$$\mu_{B} = \dfrac{1}{m} \sum ^{m}<em>{i=0} x</em>{i} $$<br>$$\sigma_{B}^2 = \dfrac{1}{m} \sum ^{m}<em>{i=0}(x</em>{i} - \mu_{B}) ^ 2$$<br>where the square is element wise. and following sqrt and devision are element-wise as well.</p>
 <p>$$\hat{x_{i}} = \dfrac{x_{i} - \mu_{b}}{\sqrt{\sigma_{B} + \epsilon}} $$<br>where $\epsilon$ is a very small constant in case the denominator is equal to 0. </p>
 <p>到这里我们就已经完成了标准化(Normalization), 但是如果有些数据不需要标准化怎么办，这里我们引入两个可以学习的参数，$\gamma$ and $\beta$, where are scale and shift parameters, respectively. 这样神经网络可以慢慢的学出来，前面的normalization是不是真的起到了作用，如果没有，就通过turning scale and shift 来抵消一些影响。</p>
 <p>Note：这里对于sigmoid和tanh来说是很好理解的，但是relu就有点奇怪，不过根据实验的结果，BN对激活函数是Relu也非常重要，可以参考这个<a href="https://www.youtube.com/watch?v=p9H72kadx8U">视频</a></p>
@@ -1422,7 +1419,7 @@
 <span id="more"></span>
 
 <h2 id="Mini-Batch"><a href="#Mini-Batch" class="headerlink" title="Mini-Batch"></a>Mini-Batch</h2><p>Vectorization could help us to speed up the calculation by avoid loop. But the technique is base only the the computational level. If we want to training on the whole batch. Assume we have a 10,000 example, each example with dimensions 60, the input matrix will be [60, 10,000] with each column represents a image. The output will be [1, 10,000]. We update parameters once each epoch. Which means that, for each epoch, we need to do several huge matrix multiplication to get the output, then calculate the gradient for each element in the output vector, and update all parameters, <strong>once</strong>. That extremly slows down the optimization because each epoch will spend lots of time.<br>By mini-batch technique. We can separate the huge matrix into several matrix. For above example, the big input can be seperated to 100 baby-matrixs. Therefore, the training process will become to: For each epoch, we pick up the first batch do all calculation, the dimension of input matrix is [60,100], and output is [1,100], then updata all parameter once. Then move on to the second batch, so on so forth. After finish all 100 batch, we move on two the next epoch. 这样更新参数更频繁理论上（或者是实验上反正我也不清楚）收敛更快。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+<h2 id="Advantage-and-Disadvantage"><a href="#Advantage-and-Disadvantage" class="headerlink" title="Advantage and Disadvantage"></a>Advantage and Disadvantage</h2>]]></content>
       <tags>
         <tag>programming💻</tag>
       </tags>
