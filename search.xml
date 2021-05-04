@@ -1341,7 +1341,10 @@
   <entry>
     <title>Rough Understanding of WGAN</title>
     <url>/2021/05/02/Rough-Understanding-of-WGAN/</url>
-    <content><![CDATA[<h2 id="Earth-Mover-Distance-EM-distance"><a href="#Earth-Mover-Distance-EM-distance" class="headerlink" title="Earth-Mover Distance (EM distance)"></a>Earth-Mover Distance (EM distance)</h2><p>The distance between two distribution, for example we have two distribution:</p>
+    <content><![CDATA[<p>Rough Understanding of WGAN</p>
+<span id="more"></span>
+
+<h2 id="Earth-Mover-Distance-EM-distance"><a href="#Earth-Mover-Distance-EM-distance" class="headerlink" title="Earth-Mover Distance (EM distance)"></a>Earth-Mover Distance (EM distance)</h2><p>The distance between two distribution, for example we have two distribution:</p>
 <p>$P_{1} = 1$, $P_{2} = 3$, $P_{3} = 4$, $P_{4} = 2$</p>
 <p>$Q_{1} = 2$, $Q_{2} = 5$, $Q_{3} = 3$, $Q_{4} = 1$,</p>
 <p>To match up Q and P, we need to calculate the shortest distance, which is given by $\delta_{i+1} = \delta{i} + Q{i} - P{i}$</p>
@@ -1388,8 +1391,20 @@
     <url>/2021/05/02/Batch-Normalization/</url>
     <content><![CDATA[<p>复习一下batch normalization，或者说学习一下，好像从来没学明白过。</p>
  <span id="more"></span>
-<h2 id="不用batch-normalization"><a href="#不用batch-normalization" class="headerlink" title="不用batch normalization"></a>不用batch normalization</h2><p> 之前我有过一个拟合函数，优化自由能的项目，因为数据量非常少，最多的时候也只有1000个点，所以没有重点看这玩意儿。当时那个网络结构非常简单，就是一个输入一个输出，由于用的是vector，所以所有的输入可以用一个向量全部表示出来，就是：
- </p>
+
+<h2 id="为什么要用batch-normalization？"><a href="#为什么要用batch-normalization？" class="headerlink" title="为什么要用batch normalization？"></a>为什么要用batch normalization？</h2><p>对于全连接神经网络，输入为u，经过线性层，我们得到：</p>
+<p>$$x = Wu + b$$</p>
+<p>对于sigmoid和tanh函数，我们希望x的分布更接近0附近，因为在0附近activation function的slope更大（确保神经网络不会饱和），更容易表现出不同的分布特征，所以我们希望x的平均值为0且标准差为1：</p>
+<p>$$\mu_{B} = \dfrac{1}{m} \sumx_{i} $$</p>
+<p>$$\sigma_{B}^2 = \dfrac{1}{m} (x_{i} - \mu_{B}) ^ 2$$</p>
+<p>where the square is element wise. and following sqrt and device are element-wise as well.</p>
+<p>$$\hat{x_{i}} = \dfrac{x_{i} - \mu_{b}}{\sqrt{\sigma_{B} + \epsilon}} $$<br>where $\epsilon$ is a very small constant in case the denominator is equal to 0. </p>
+<p>到这里我们就已经完成了标准化(Normalization), 但是如果有些数据不需要标准化怎么办，这里我们引入两个可以学习的参数，$\gamma$ and $\beta$, where is scale and shift parameters, respectively. 这样神经网络可以慢慢的学出来，前面的normalization是不是真的起到了作用，如果没有，就通过turning scale and shift 来抵消一些影响。</p>
+<p>Note：这里对于sigmoid和tanh来说是很好理解的，但是relu就有点奇怪，不过根据实验的结果，BN对激活函数是Relu也非常重要，可以参考这个<a href="https://www.youtube.com/watch?v=p9H72kadx8U">视频</a></p>
+<h2 id="手动实现（numpy"><a href="#手动实现（numpy" class="headerlink" title="手动实现（numpy)"></a>手动实现（numpy)</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">linear_output = np.rand([<span class="number">1</span>, <span class="number">20</span>])</span><br><span class="line">mean_value = np.mean(linear_output)</span><br><span class="line">std = np.std(linear_output)</span><br><span class="line"><span class="comment"># 好吧我觉得没啥好写的太简单了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="PyTorch实现"><a href="#PyTorch实现" class="headerlink" title="PyTorch实现"></a>PyTorch实现</h2><p>对于FNN一行代码就够了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">nn.Linear(input_dim, output_dim)</span><br><span class="line">nn.BatchNorm1d(output_dim)</span><br><span class="line"><span class="comment"># the output dimension of batch norm will be same as the linear layer.</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>programming💻</tag>
