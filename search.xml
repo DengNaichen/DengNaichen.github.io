@@ -1354,7 +1354,7 @@
 <p>$\delta_{3} = -1 + 3 = 2$，</p>
 <p>$\delta_{4} = -1 + 2 = 1$</p>
 <p>Finally, the Earth move distance $W = \sum |\delta_{i}| = 7$. Above equations set can be simplified to a single equation:</p>
-<p>$$Em = \sum (Q_{i}- P_{i})$$</p>
+<p>$$EM = \sum ^{m}<em>{i=0} (Q</em>{i}- P_{i})$$</p>
 <p>In deep learning algorithm, we can represent above equation as</p>
 <p>$$Loss = \dfrac{1}{m} \sum ^{m}_{i=0} (C(x) - C(G(z)))$$</p>
 <h2 id="Get-the-gradient-penalty"><a href="#Get-the-gradient-penalty" class="headerlink" title="Get the gradient penalty"></a>Get the gradient penalty</h2><p>Now we need to calculate the gradient given score, which is $\dfrac{\partial C(x)}{\partial x}$, where $C(x)$ is a differentiable function represented by a multilayer perceptron with parameters $\theta$.</p>
@@ -1373,7 +1373,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gradient_norm = gradient.norm(<span class="number">2</span>, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>这里我们用到了L2 norm，aka Euclid norm, 就是向量元素绝对值的平方再开方，<br>  $$||x|| = \sqrt{\sum x^2}$$<br>  他的数学意义是，原点到每一个x值距离的和。我们希望这个gradient是小于1的，therefore the penalty term can be written as:</p>
+<p>这里我们用到了L2 norm，aka Euclid norm, 就是向量元素绝对值的平方再开方，<br>  $$||x|| = \sqrt{\sum ^{m}<em>{i=0} x</em>{i}^2}$$<br>  他的数学意义是，原点到每一个x值距离的和。我们希望这个gradient是小于1的，therefore the penalty term can be written as:</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">penalty = torch.mean((gradient_norm -<span class="number">1</span>)**<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
