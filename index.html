@@ -191,6 +191,161 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/09/sharcnet-getttign-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/09/sharcnet-getttign-start/" class="post-title-link" itemprop="url">sharcnet getttign start</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-05-09 15:14:15 / Modified: 15:23:42" itemprop="dateCreated datePublished" datetime="2021-05-09T15:14:15-04:00">2021-05-09</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>288</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="login-in-sharcnet"><a href="#login-in-sharcnet" class="headerlink" title="login in sharcnet"></a>login in sharcnet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh graham.sharcnet.ca -l naicheng</span><br></pre></td></tr></table></figure>
+<p>enter password, the path of my dir is <code>projects/def-jeffchen/naicheng</code></p>
+<p>back to last layer is<br><code>cd ..</code> </p>
+<h3 id="upload-file-onto-my-dir"><a href="#upload-file-onto-my-dir" class="headerlink" title="upload file onto my dir"></a>upload file onto my dir</h3><p>enter the dir where my file store in:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost $scp filename naicheng@graham.sharcnet.ca:projects&#x2F;def-jeffchen&#x2F;naicheng</span><br></pre></td></tr></table></figure>
+
+<p>delete file: <code>rm filename</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/08/softmax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/08/softmax/" class="post-title-link" itemprop="url">softmax</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-05-08 11:50:15 / Modified: 12:43:38" itemprop="dateCreated datePublished" datetime="2021-05-08T11:50:15-04:00">2021-05-08</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>482</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>The softmax function is a function that turns a vector from real values to real values that sum to 1. The input can be positive, negitive, zero or greater than one. Softmax transfer them into values between 0 and 1, so that they can be interpreted as probabilities.</p>
+<p>Softmax Formula</p>
+<p>$$ \sigma(z)<em>{i} = \dfrac{e^{z</em>{i}}}{\sum ^{K}<em>{j=1}e^{z</em>{j}}} $$</p>
+<p>where $z_{i}$ are the elements of the input vactor and can take any real value. Denominator on the right hand side ensures that all the outputs values of the function will sum to 1, thus constituting a valid probability distribution.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/04/Mini-batch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -874,193 +1029,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/Lecture7%20recursion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/10/Lecture7%20recursion/" class="post-title-link" itemprop="url">Lecture 7 recursion</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-10 16:20:13" itemprop="dateCreated datePublished" datetime="2021-04-10T16:20:13-04:00">2021-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-16 21:02:03" itemprop="dateModified" datetime="2021-04-16T21:02:03-04:00">2021-04-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs61a%F0%9F%99%8B/" itemprop="url" rel="index"><span itemprop="name">cs61a🙋</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>751</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYVWfjkAMzMdoEy_j47rfrVd&index=2">video</a></p>
-<p>最近感觉自己写程序到一个瓶颈。我发现我只是重复的用一些低级的东西，然后遇到不会的就去Google。虽然实现了一些功能，但是整体的代码风格不统一，项目的组织也没有什么头绪，感觉一切都乱糟糟的。<br>这是我上这门课的动力，8多说了，开🐛。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/10/Lecture7%20recursion/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/" class="post-title-link" itemprop="url">这本书能让你戒烟</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-10 16:15:23" itemprop="dateCreated datePublished" datetime="2021-04-10T16:15:23-04:00">2021-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-11 17:34:10" itemprop="dateModified" datetime="2021-04-11T17:34:10-04:00">2021-04-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>11 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h3><ul>
-<li><p>英国政府已经在电视广告上浪费了几百万英镑，试图说服青少年不要吸烟。这就如同在广告里告诉他们，骑摩托车有可能出事故，他们绝不会因为这个就不骑摩托车。青少年都清楚，一根香烟并不会夺走他们的生命。他们初次尝试吸烟时，都不认为自己会染上烟瘾。吸烟和肺癌之间的联系早已众所周知，尽管如此，青</p>
-</li>
-<li><p>获得的东西，是全世界每个吸烟者都全心渴望的：自由！</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/10/%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%83%BD%E8%AE%A9%E4%BD%A0%E6%88%92%E7%83%9F/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1132,7 +1100,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1202,7 +1170,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">91k</span>
+    <span title="Symbols count total">92k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
