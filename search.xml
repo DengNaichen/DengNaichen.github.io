@@ -1431,14 +1431,30 @@
   <entry>
     <title>sharcnet getttign start</title>
     <url>/2021/05/09/sharcnet-getttign-start/</url>
-    <content><![CDATA[<h3 id="login-in-sharcnet"><a href="#login-in-sharcnet" class="headerlink" title="login in sharcnet"></a>login in sharcnet</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh graham.sharcnet.ca -l naicheng</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h3 id="Login-in-sharcnet"><a href="#Login-in-sharcnet" class="headerlink" title="Login in sharcnet"></a>Login in sharcnet</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh graham.sharcnet.ca -l naicheng</span><br></pre></td></tr></table></figure>
+
 <p>enter password, the path of my dir is <code>projects/def-jeffchen/naicheng</code></p>
 <p>back to last layer is<br><code>cd ..</code> </p>
-<h3 id="upload-file-onto-my-dir"><a href="#upload-file-onto-my-dir" class="headerlink" title="upload file onto my dir"></a>upload file onto my dir</h3><p>enter the dir where my file store in:</p>
+<h3 id="Uploads-file-onto-my-dir"><a href="#Uploads-file-onto-my-dir" class="headerlink" title="Uploads file onto my dir"></a>Uploads file onto my dir</h3><p>enter the dir where my file store in:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost $scp filename naicheng@graham.sharcnet.ca:projects&#x2F;def-jeffchen&#x2F;naicheng</span><br></pre></td></tr></table></figure>
 
 <p>delete file: <code>rm filename</code></p>
-]]></content>
+<h3 id="Create-virtual-environment-via-pip"><a href="#Create-virtual-environment-via-pip" class="headerlink" title="Create virtual environment via pip"></a>Create virtual environment via pip</h3><p>Create a virtual environment call ENV:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ virtualenv --no-download ~&#x2F;ENV</span><br></pre></td></tr></table></figure>
+<p>Active the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ source ~&#x2F;ENV&#x2F;bin&#x2F;activate</span><br></pre></td></tr></table></figure>
+<p>Upgrade <code>pip</code> to latest version in the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ pip install --no-index --upgrade pip</span><br></pre></td></tr></table></figure>
+<p>Deactivate the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(ENV) [name@server ~] deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-library"><a href="#Install-library" class="headerlink" title="Install library"></a>Install library</h3><p>install <code>numpy</code>, <code>torch</code>, <code>torchvision</code>, <code>matplotlib</code> and <code>seaborn</code>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install numpy</span><br><span class="line">pip install torch</span><br><span class="line">pip install trochvision</span><br><span class="line">pip install seaborn</span><br><span class="line">python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>List all installed package:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip list</span><br><span class="line">Package           Version</span><br><span class="line">----------------- -----------</span><br><span class="line">cycler            0.10.0</span><br><span class="line">kiwisolver        1.3.1</span><br><span class="line">matplotlib        3.3.4</span><br><span class="line">numpy             1.20.2</span><br><span class="line">pandas            1.2.3</span><br><span class="line">Pillow            8.1.2</span><br><span class="line">Pillow-SIMD       7.0.0.post3</span><br><span class="line">pip               21.0.1</span><br><span class="line">pyparsing         2.4.7</span><br><span class="line">python-dateutil   2.8.1</span><br><span class="line">pytz              2021.1</span><br><span class="line">scipy             1.6.0</span><br><span class="line">seaborn           0.11.1</span><br><span class="line">setuptools        41.6.0</span><br><span class="line">six               1.16.0</span><br><span class="line">torch             1.8.1</span><br><span class="line">torchvision       0.9.1</span><br><span class="line">typing-extensions 3.10.0.0</span><br><span class="line">wheel             0.33.6</span><br></pre></td></tr></table></figure>
+<p>暂时够用了。</p>
+<h3 id="submit-projects"><a href="#submit-projects" class="headerlink" title="submit projects"></a>submit projects</h3>]]></content>
       <tags>
         <tag>programming💻</tag>
       </tags>
