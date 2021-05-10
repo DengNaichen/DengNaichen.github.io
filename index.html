@@ -191,6 +191,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/AWS-Getting-Start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
+      <meta itemprop="name" content="Naicheng Deng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邓乃诚的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/10/AWS-Getting-Start/" class="post-title-link" itemprop="url">AWS Getting Start</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-05-10 17:23:24 / Modified: 18:07:26" itemprop="dateCreated datePublished" datetime="2021-05-10T17:23:24-04:00">2021-05-10</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>完全参考李沐的<a target="_blank" rel="noopener" href="https://www.zhihu.com/zvideo/1363746409150332928">教程</a>, 为啥李沐这么牛逼的人要做这么基础的教程？</p>
+<p>首先启动一个instance，storage我选的是20G，因为<code>cuda</code>和<code>PyTorch</code>都需要3G左右的空间，关于stop和terminate，stop不会继续收取运行的费用，但是硬盘还是要继续交钱，大概一周不到10刀的样子，配置好的环境和上传的程序不会被删掉。terminate就是完全停止instance，硬盘上的东西也会被抹掉。</p>
+<p>连接aws via terminal：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 我的密钥名字叫cananda</span><br><span class="line">ls Downloads&#x2F;canada.pem</span><br><span class="line"># 把权限改成400</span><br><span class="line">chmod 400 Download&#x2F;canada.pem</span><br><span class="line"># 通过ssh连接</span><br><span class="line">ssh -i Download&#x2F;canada.pem ubuntu@ip address</span><br></pre></td></tr></table></figure>
+
+<p>连接好了之后更新一下系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential</span><br></pre></td></tr></table></figure>
+
+<p>接下来下载<code>cuda</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;11.3.0&#x2F;local_installers&#x2F;cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
+<p>然后默认一直下一步安装就好了</p>
+<p>注意最后一步又一个warning，这时候要打开一个文件更改一点设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .bashre</span><br></pre></td></tr></table></figure>
+
+<p>在文件的最后一行后面加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIBRARY_PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-11.3&#x2F;lib64</span><br></pre></td></tr></table></figure>
+
+<p>Note: 一点点vim的使用技巧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim + filename # open a file</span><br><span class="line">i # insert</span><br><span class="line">:wq # save and quit</span><br></pre></td></tr></table></figure>
+
+<p>之后安装miniconda</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-py39_4.9.2-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>之后创建一个新的环境<code>torch</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n torch python&#x3D;3.8 pip</span><br><span class="line">conda activate torch</span><br></pre></td></tr></table></figure>
+
+<p>然后安装linux的pytorch：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install torch&#x3D;&#x3D;1.8.1+cu111 torchvision&#x3D;&#x3D;0.9.1+cu111 torchaudio&#x3D;&#x3D;0.8.1 -f https:&#x2F;&#x2F;download.pytorch.org&#x2F;whl&#x2F;torch_stable.html</span><br></pre></td></tr></table></figure>
+
+<p>最后安装一些常有的文件就好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unzip</span><br><span class="line">pip installl jupyter</span><br></pre></td></tr></table></figure>
+
+<p>嘿嘿，环境就配置好了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/09/sharcnet-getttign-start/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -959,92 +1064,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/%E7%A8%80%E7%BC%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/6KFtrXg.jpg">
-      <meta itemprop="name" content="Naicheng Deng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邓乃诚的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/12/%E7%A8%80%E7%BC%BA/" class="post-title-link" itemprop="url">稀缺</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-12 20:26:16" itemprop="dateCreated datePublished" datetime="2021-04-12T20:26:16-04:00">2021-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-16 19:24:37" itemprop="dateModified" datetime="2021-04-16T19:24:37-04:00">2021-04-16</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>23k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>21 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="第一部分-稀缺心态是一切稀缺的根源"><a href="#第一部分-稀缺心态是一切稀缺的根源" class="headerlink" title="第一部分　稀缺心态是一切稀缺的根源"></a>第一部分　稀缺心态是一切稀缺的根源</h2><p>《稀缺》的书摘<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/12/%E7%A8%80%E7%BC%BA/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1116,7 +1135,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1186,12 +1205,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">93k</span>
+    <span title="Symbols count total">94k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:24</span>
+    <span title="Reading time total">1:25</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
