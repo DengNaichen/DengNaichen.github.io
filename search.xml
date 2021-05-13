@@ -1429,49 +1429,6 @@
       </tags>
   </entry>
   <entry>
-    <title>sharcnet getttign start</title>
-    <url>/2021/05/09/sharcnet-getttign-start/</url>
-    <content><![CDATA[<h3 id="Login-in-sharcnet"><a href="#Login-in-sharcnet" class="headerlink" title="Login in sharcnet"></a>Login in sharcnet</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh graham.sharcnet.ca -l naicheng</span><br></pre></td></tr></table></figure>
-
-<p>enter password, the path of my dir is <code>projects/def-jeffchen/naicheng</code></p>
-<p>back to last layer is<br><code>cd ..</code> </p>
-<h3 id="Uploads-file-onto-my-dir"><a href="#Uploads-file-onto-my-dir" class="headerlink" title="Uploads file onto my dir"></a>Uploads file onto my dir</h3><p>enter the dir where my file store in:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost $scp filename naicheng@graham.sharcnet.ca:projects&#x2F;def-jeffchen&#x2F;naicheng</span><br></pre></td></tr></table></figure>
-
-<p>delete file: <code>rm filename</code></p>
-<h3 id="Create-virtual-environment-via-pip"><a href="#Create-virtual-environment-via-pip" class="headerlink" title="Create virtual environment via pip"></a>Create virtual environment via pip</h3><p>Create a virtual environment call ENV:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ virtualenv --no-download ~&#x2F;ENV</span><br></pre></td></tr></table></figure>
-<p>Active the environment</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ source ~&#x2F;ENV&#x2F;bin&#x2F;activate</span><br></pre></td></tr></table></figure>
-<p>Upgrade <code>pip</code> to latest version in the environment</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ pip install --no-index --upgrade pip</span><br></pre></td></tr></table></figure>
-<p>Deactivate the environment</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(ENV) [name@server ~] deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="Install-library"><a href="#Install-library" class="headerlink" title="Install library"></a>Install library</h3><p>install <code>numpy</code>, <code>torch</code>, <code>torchvision</code>, <code>matplotlib</code> and <code>seaborn</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install numpy</span><br><span class="line">pip install torch</span><br><span class="line">pip install trochvision</span><br><span class="line">pip install seaborn</span><br><span class="line">python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
-
-<p>List all installed package:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip list</span><br><span class="line">Package           Version</span><br><span class="line">----------------- -----------</span><br><span class="line">cycler            0.10.0</span><br><span class="line">kiwisolver        1.3.1</span><br><span class="line">matplotlib        3.3.4</span><br><span class="line">numpy             1.20.2</span><br><span class="line">pandas            1.2.3</span><br><span class="line">Pillow            8.1.2</span><br><span class="line">Pillow-SIMD       7.0.0.post3</span><br><span class="line">pip               21.0.1</span><br><span class="line">pyparsing         2.4.7</span><br><span class="line">python-dateutil   2.8.1</span><br><span class="line">pytz              2021.1</span><br><span class="line">scipy             1.6.0</span><br><span class="line">seaborn           0.11.1</span><br><span class="line">setuptools        41.6.0</span><br><span class="line">six               1.16.0</span><br><span class="line">torch             1.8.1</span><br><span class="line">torchvision       0.9.1</span><br><span class="line">typing-extensions 3.10.0.0</span><br><span class="line">wheel             0.33.6</span><br></pre></td></tr></table></figure>
-<p>暂时够用了。</p>
-<h3 id="submit-projects"><a href="#submit-projects" class="headerlink" title="submit projects"></a>submit projects</h3>]]></content>
-      <tags>
-        <tag>programming💻</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>softmax</title>
-    <url>/2021/05/08/softmax/</url>
-    <content><![CDATA[<p>The softmax function is a function that turns a vector from real values to real values that sum to 1. The input can be positive, negitive, zero or greater than one. Softmax transfer them into values between 0 and 1, so that they can be interpreted as probabilities.</p>
-<p>Softmax Formula</p>
-<p>$$ \sigma(z)<em>{i} = \dfrac{e^{z</em>{i}}}{\sum ^{K}<em>{j=1}e^{z</em>{j}}} $$</p>
-<p>where $z_{i}$ are the elements of the input vactor and can take any real value. Denominator on the right hand side ensures that all the outputs values of the function will sum to 1, thus constituting a valid probability distribution.</p>
-]]></content>
-      <tags>
-        <tag>programming💻</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AWS Getting Start</title>
     <url>/2021/05/10/AWS-Getting-Start/</url>
     <content><![CDATA[<p>完全参考李沐的<a href="https://www.zhihu.com/zvideo/1363746409150332928">教程</a>, 为啥李沐这么牛逼的人要做这么基础的教程？</p>
@@ -1517,6 +1474,71 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jupyter: Specify local or remote Jupyter server for connections</span><br></pre></td></tr></table></figure>
 <p>输入一个url就行了</p>
 ]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git day 1</title>
+    <url>/2021/05/11/git-day-1/</url>
+    <content><![CDATA[<p>在已存在的目录中初始化仓库：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd &#x2F;Users&#x2F;user&#x2F;my_project</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>softmax</title>
+    <url>/2021/05/08/Softmax/</url>
+    <content><![CDATA[<p>The softmax function is a function that turns a vector from real values to real values that sum to 1. The input can be positive, negitive, zero or greater than one. Softmax transfer them into values between 0 and 1, so that they can be interpreted as probabilities.</p>
+<p>Softmax Formula</p>
+<p>$$ \sigma(z)<em>{i} = \dfrac{e^{z</em>{i}}}{\sum ^{K}<em>{j=1}e^{z</em>{j}}} $$</p>
+<p>where $z_{i}$ are the elements of the input vactor and can take any real value. Denominator on the right hand side ensures that all the outputs values of the function will sum to 1, thus constituting a valid probability distribution.</p>
+]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记电脑坏了</title>
+    <url>/2021/04/03/%E8%AE%B0%E7%94%B5%E8%84%91%E5%9D%8F%E4%BA%86/</url>
+    <content><![CDATA[<p>今天电脑坏了，久违的体验到了可以名正言顺摸鱼的感觉。</p>
+<p>这是三年来我唯一一天离开电脑，没有接触编程之前，我用电脑只是看电子书，做普通的作业，大屏幕让我觉得效率很高。一年前接触编程到现在算是半个脚踏进程序员的门里，我开始越来越离不开它。我以前一直标榜自己是一个有生产力的人，思想有深度的人。我的生产力工具就是电脑。可是我突然发现，如果只有在写代码，或者推导物理公式可以让我觉得自己是一个有生产力，有用的人，那我未免有点悲哀了。我很久之前和ex讨论过想要成为什么样的人，我说几年前，我最想要变成什么都懂一点的人，但是后来我发现这不仅不现实，而且很幼稚，后来我很注意的把自己有限的精力放在最需要用的事情上，我觉得我是有进步的，因为我不希望经济成为制约我的因素，我要先有一个安身立命的本事，而不是学一大堆看起来很酷但是没有什么用的东西。但是现在我觉得自己有点过头了，我不应该把工作太多的带入到生活里（虽然现在很难分开）。即使离开了工作，离开了擅长的事情，我也希望可以平静的面对。我知道无时无刻都沉浸在工作里的人很像天才的样子。但是这不是充分必要条件，我离天才的距离也很远。希望经过了这件事，我可以工作时乐在其中，但是离开了工作，也可以从容的面对，享受生活，珍惜身边的人。</p>
+]]></content>
+      <tags>
+        <tag>日常</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sharcnet getttign start</title>
+    <url>/2021/05/09/Sharcnet-Getting-Start/</url>
+    <content><![CDATA[<h3 id="Login-in-sharcnet"><a href="#Login-in-sharcnet" class="headerlink" title="Login in sharcnet"></a>Login in sharcnet</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh graham.sharcnet.ca -l naicheng</span><br></pre></td></tr></table></figure>
+
+<p>enter password, the path of my dir is <code>projects/def-jeffchen/naicheng</code></p>
+<p>back to last layer is<br><code>cd ..</code> </p>
+<h3 id="Uploads-file-onto-my-dir"><a href="#Uploads-file-onto-my-dir" class="headerlink" title="Uploads file onto my dir"></a>Uploads file onto my dir</h3><p>enter the dir where my file store in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost $scp filename naicheng@graham.sharcnet.ca:projects&#x2F;def-jeffchen&#x2F;naicheng</span><br></pre></td></tr></table></figure>
+
+<p>delete file: <code>rm filename</code></p>
+<h3 id="Create-virtual-environment-via-pip"><a href="#Create-virtual-environment-via-pip" class="headerlink" title="Create virtual environment via pip"></a>Create virtual environment via pip</h3><p>Create a virtual environment call ENV:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ virtualenv --no-download ~&#x2F;ENV</span><br></pre></td></tr></table></figure>
+<p>Active the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ source ~&#x2F;ENV&#x2F;bin&#x2F;activate</span><br></pre></td></tr></table></figure>
+<p>Upgrade <code>pip</code> to latest version in the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[name@server ~]$ pip install --no-index --upgrade pip</span><br></pre></td></tr></table></figure>
+<p>Deactivate the environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(ENV) [name@server ~] deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-library"><a href="#Install-library" class="headerlink" title="Install library"></a>Install library</h3><p>install <code>numpy</code>, <code>torch</code>, <code>torchvision</code>, <code>matplotlib</code> and <code>seaborn</code>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install numpy</span><br><span class="line">pip install torch</span><br><span class="line">pip install trochvision</span><br><span class="line">pip install seaborn</span><br><span class="line">python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>List all installed package:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip list</span><br><span class="line">Package           Version</span><br><span class="line">----------------- -----------</span><br><span class="line">cycler            0.10.0</span><br><span class="line">kiwisolver        1.3.1</span><br><span class="line">matplotlib        3.3.4</span><br><span class="line">numpy             1.20.2</span><br><span class="line">pandas            1.2.3</span><br><span class="line">Pillow            8.1.2</span><br><span class="line">Pillow-SIMD       7.0.0.post3</span><br><span class="line">pip               21.0.1</span><br><span class="line">pyparsing         2.4.7</span><br><span class="line">python-dateutil   2.8.1</span><br><span class="line">pytz              2021.1</span><br><span class="line">scipy             1.6.0</span><br><span class="line">seaborn           0.11.1</span><br><span class="line">setuptools        41.6.0</span><br><span class="line">six               1.16.0</span><br><span class="line">torch             1.8.1</span><br><span class="line">torchvision       0.9.1</span><br><span class="line">typing-extensions 3.10.0.0</span><br><span class="line">wheel             0.33.6</span><br></pre></td></tr></table></figure>
+<p>暂时够用了。</p>
+<h3 id="submit-projects"><a href="#submit-projects" class="headerlink" title="submit projects"></a>submit projects</h3>]]></content>
       <tags>
         <tag>programming💻</tag>
       </tags>
