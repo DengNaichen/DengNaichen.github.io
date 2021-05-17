@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="邓乃诚的博客">
 <meta property="og:description" content="week 1, notes and thinking">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/CmidpVv.png">
 <meta property="article:published_time" content="2021-05-17T14:48:34.000Z">
-<meta property="article:modified_time" content="2021-05-17T14:54:12.451Z">
+<meta property="article:modified_time" content="2021-05-17T18:26:56.189Z">
 <meta property="article:author" content="Naicheng Deng">
 <meta property="article:tag" content="programming💻">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/CmidpVv.png">
 
 <link rel="canonical" href="http://example.com/2021/05/17/introduction-to-data-and-data-processing/">
 
@@ -221,7 +223,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-17 10:48:34 / Modified: 10:54:12" itemprop="dateCreated datePublished" datetime="2021-05-17T10:48:34-04:00">2021-05-17</time>
+              <time title="Created: 2021-05-17 10:48:34 / Modified: 14:26:56" itemprop="dateCreated datePublished" datetime="2021-05-17T10:48:34-04:00">2021-05-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,14 +241,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>188</span>
+              <span>1.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -260,7 +262,54 @@
       
         <p>week 1, notes and thinking</p>
 <span id="more"></span>
-<h2 id="Big-Data-and-Data-Processing"><a href="#Big-Data-and-Data-Processing" class="headerlink" title="Big Data and Data Processing"></a>Big Data and Data Processing</h2><h2 id="Basic-Data-Concept"><a href="#Basic-Data-Concept" class="headerlink" title="Basic Data Concept"></a>Basic Data Concept</h2><h2 id="Database-Design-Entity-Relationship-Model-to-Relational-Model"><a href="#Database-Design-Entity-Relationship-Model-to-Relational-Model" class="headerlink" title="Database Design: Entity Relationship Model to Relational Model"></a>Database Design: Entity Relationship Model to Relational Model</h2><h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2><h2 id="Spatial-Database"><a href="#Spatial-Database" class="headerlink" title="Spatial Database"></a>Spatial Database</h2><h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>
+<h2 id="Big-Data-and-Data-Processing"><a href="#Big-Data-and-Data-Processing" class="headerlink" title="Big Data and Data Processing"></a>Big Data and Data Processing</h2><p>what data is:<br>we have tons of sensors to collect data. so we need a system or set of systems that helps us understanding this data and make sense of it.</p>
+<p>Data -&gt; Process -&gt; Information</p>
+<p>What is big data:</p>
+<ul>
+<li>the volume of available data is huge</li>
+<li>the data keeps growing at a staggering rate(a system digests high rate data)</li>
+<li>data comes from variety of sources in totally different formats(integrating data)</li>
+</ul>
+<p>The characteristics of scalable data processing</p>
+<ul>
+<li>volume</li>
+<li>velocity</li>
+<li>variety</li>
+</ul>
+<p>a plethora of data processing systems</p>
+<ul>
+<li>relational DBMS</li>
+<li>NoSQL graph, documents, key-value store</li>
+<li>Hadoop, Spark</li>
+</ul>
+<h3 id="Database-Management-Systems"><a href="#Database-Management-Systems" class="headerlink" title="Database Management Systems"></a>Database Management Systems</h3><p>what’s database<br>a very large, integrate collection of data<br>what is a database management system</p>
+<p>benefits of DBMS</p>
+<ul>
+<li>data independence: the application developer don’t need know anything about the relation between data. isolate developer from user. Not required to know how the data in the application is stored</li>
+<li>efficient data access: how to retrieve the data.</li>
+<li>data administration: just one local store the data in. and one port.</li>
+<li>data integrity and security: </li>
+<li>concurrent access and crash recovery </li>
+<li>Reduced app development time.</li>
+</ul>
+<h3 id="Data-Models"><a href="#Data-Models" class="headerlink" title="Data Models"></a>Data Models</h3><p>data model: collection of concepts for describing data<br>schema: description of a particular collection of data, using given data model.<br>Relational model of data:</p>
+<ul>
+<li>most widely used model</li>
+<li>relation is shown through the table with rows and columns.<br><img src="https://i.imgur.com/CmidpVv.png"></li>
+</ul>
+<p>One most important feature of DBMS: independence</p>
+<ol>
+<li>logical data independence: protects the user or the application on top of the database from changes in the logical schema or logical structure of the data.</li>
+<li>physical data independence: protect the application from changes in the physical schema or physical structure of the data.</li>
+</ol>
+<p>Example Queries in a DBMS:</p>
+<ol>
+<li>what is the name of the student with ID 12</li>
+<li>what is the salary if prof</li>
+<li>how many students are enrolled in … course?</li>
+<li>how many students in introduction to scalable data received a grade less than C?</li>
+</ol>
+<h2 id="Basic-Data-Concept"><a href="#Basic-Data-Concept" class="headerlink" title="Basic Data Concept"></a>Basic Data Concept</h2><h2 id="Database-Design-Entity-Relationship-Model-to-Relational-Model"><a href="#Database-Design-Entity-Relationship-Model-to-Relational-Model" class="headerlink" title="Database Design: Entity Relationship Model to Relational Model"></a>Database Design: Entity Relationship Model to Relational Model</h2><h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2><h2 id="Spatial-Database"><a href="#Spatial-Database" class="headerlink" title="Spatial Database"></a>Spatial Database</h2><h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>
     </div>
 
     
@@ -340,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-Data-and-Data-Processing"><span class="nav-number">1.</span> <span class="nav-text">Big Data and Data Processing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Data-Concept"><span class="nav-number">2.</span> <span class="nav-text">Basic Data Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Design-Entity-Relationship-Model-to-Relational-Model"><span class="nav-number">3.</span> <span class="nav-text">Database Design: Entity Relationship Model to Relational Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-SQL-Query-Language"><span class="nav-number">4.</span> <span class="nav-text">Introduction to SQL Query Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spatial-Database"><span class="nav-number">5.</span> <span class="nav-text">Spatial Database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project-Milestone-1"><span class="nav-number">6.</span> <span class="nav-text">Project Milestone 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-1-Quiz"><span class="nav-number">7.</span> <span class="nav-text">Week 1 Quiz</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-Data-and-Data-Processing"><span class="nav-number">1.</span> <span class="nav-text">Big Data and Data Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-Management-Systems"><span class="nav-number">1.1.</span> <span class="nav-text">Database Management Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Models"><span class="nav-number">1.2.</span> <span class="nav-text">Data Models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Data-Concept"><span class="nav-number">2.</span> <span class="nav-text">Basic Data Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Design-Entity-Relationship-Model-to-Relational-Model"><span class="nav-number">3.</span> <span class="nav-text">Database Design: Entity Relationship Model to Relational Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-SQL-Query-Language"><span class="nav-number">4.</span> <span class="nav-text">Introduction to SQL Query Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spatial-Database"><span class="nav-number">5.</span> <span class="nav-text">Spatial Database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project-Milestone-1"><span class="nav-number">6.</span> <span class="nav-text">Project Milestone 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-1-Quiz"><span class="nav-number">7.</span> <span class="nav-text">Week 1 Quiz</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -426,12 +475,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">95k</span>
+    <span title="Symbols count total">97k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:27</span>
+    <span title="Reading time total">1:28</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
