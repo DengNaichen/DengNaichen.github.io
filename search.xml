@@ -1624,4 +1624,43 @@
         <tag>programming💻</tag>
       </tags>
   </entry>
+  <entry>
+    <title>learning sql</title>
+    <url>/2021/05/20/learning-sql/</url>
+    <content><![CDATA[<p>create a database and link to user:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> database test;</span><br><span class="line">\c test;</span><br></pre></td></tr></table></figure>
+<p>⚠️：</p>
+<ol>
+<li>在每一句的最后加上;</li>
+</ol>
+<p>now we are in the test database, create a table:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> person(</span><br><span class="line">    id bigserial <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    email <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">not</span> <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p>⚠️：</p>
+<ol>
+<li>可以去查一下官网的data type</li>
+<li>注意除了最后一句的逗号</li>
+</ol>
+<p>check or delete table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">\d person;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> person;</span><br></pre></td></tr></table></figure>
+
+<p>insert line into table</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> person (name, email) <span class="keyword">values</span> (<span class="string">&#x27;naicheng&#x27;</span>, <span class="string">&#x27;dengnaichen@gmail&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>⚠️: </p>
+<ol>
+<li>string 要用单引号</li>
+<li>don’t forget the value(s)</li>
+<li>bigserial not need insert value.</li>
+</ol>
+<p>insert <code>.sql</code> file</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">\i filepath</span><br></pre></td></tr></table></figure>
+
+<p>⚠️：</p>
+<ol>
+<li>绝对路径，且不用加引号。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>programming💻</tag>
+      </tags>
+  </entry>
 </search>
