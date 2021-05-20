@@ -1544,16 +1544,6 @@
       </tags>
   </entry>
   <entry>
-    <title>5 13 2021</title>
-    <url>/2021/05/13/5-13-2021/</url>
-    <content><![CDATA[<p>正是因为我把她定义成了一个“回避性依恋”的女生，所以我在面对她的时候，脑子里总是在同时处理两件事：面对当下的她，我应该怎么反应， 以及作为一个回避性依恋的她，我应该说什么话让她舒服。随着我的了解，我甚至也越来越确定她是这样子的一个人，</p>
-<p>只是我忘记了，站在我面前的这个，我很在乎的女孩，她是一个活生生的人。而不是等着被我测试的数据集。而我自己也不应该成为一个把她的话当成输入，然后把她的反应当成target的, 时刻都在训练的neural network。</p>
-<p>我最开始关注这个话题，不就是为了让她和我相处起来舒服，开心吗？现在却有点本末倒置了，</p>
-<p>但是有一点我从来都没有搞清楚的，也可能只是不想面对，是我们最后会发展成什么样子。我喜欢直截了当，所以不屑暧昧不清的关系。可能她是希望再多建立一些彼此的信任，当然也有可能只是单纯的不想负责任。我有足够的自信，不需要通过和别人暧昧来获得存在感。而我对亲密关系的诉求, 是长久的陪伴，是互相袒露缺点后的理解和包容，还有共同进步成为更优秀的自己。</p>
-<p>以上。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>introduction to data and data processing</title>
     <url>/2021/05/17/introduction-to-data-and-data-processing/</url>
     <content><![CDATA[<p>week 1, notes and thinking</p>
@@ -1588,10 +1578,16 @@
 <li>concurrent access and crash recovery </li>
 <li>Reduced app development time.</li>
 </ul>
-<h3 id="Data-Models"><a href="#Data-Models" class="headerlink" title="Data Models"></a>Data Models</h3><p>data model: collection of concepts for describing data<br>schema: description of a particular collection of data, using given data model.<br>Relational model of data:</p>
+<h2 id="Basic-Data-Concept"><a href="#Basic-Data-Concept" class="headerlink" title="Basic Data Concept"></a>Basic Data Concept</h2><h3 id="Data-Models"><a href="#Data-Models" class="headerlink" title="Data Models"></a>Data Models</h3><p>data model: collection of concepts for describing data<br>schema: description of a particular collection of data, using given data model.<br>Relational model of data:</p>
 <ul>
 <li>most widely used model</li>
 <li>relation is shown through the table with rows and columns.<br><img src="https://i.imgur.com/CmidpVv.png"></li>
+</ul>
+<p>Level of abstraction:<br>many views, single conceptual schema and physical schema.</p>
+<ul>
+<li>views describe how users see the data</li>
+<li>conceptual schema defines logical structure</li>
+<li>physical schema describes the files and indexed used<br><img src="https://i.imgur.com/aEJ73Ms.png"></li>
 </ul>
 <p>One most important feature of DBMS: independence</p>
 <ol>
@@ -1605,7 +1601,22 @@
 <li>how many students are enrolled in … course?</li>
 <li>how many students in introduction to scalable data received a grade less than C?</li>
 </ol>
-<h2 id="Basic-Data-Concept"><a href="#Basic-Data-Concept" class="headerlink" title="Basic Data Concept"></a>Basic Data Concept</h2><h2 id="Database-Design-Entity-Relationship-Model-to-Relational-Model"><a href="#Database-Design-Entity-Relationship-Model-to-Relational-Model" class="headerlink" title="Database Design: Entity Relationship Model to Relational Model"></a>Database Design: Entity Relationship Model to Relational Model</h2><h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2><h2 id="Spatial-Database"><a href="#Spatial-Database" class="headerlink" title="Spatial Database"></a>Spatial Database</h2><h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>]]></content>
+<h2 id="Database-Design-Entity-Relationship-Model-to-Relational-Model"><a href="#Database-Design-Entity-Relationship-Model-to-Relational-Model" class="headerlink" title="Database Design: Entity Relationship Model to Relational Model"></a>Database Design: Entity Relationship Model to Relational Model</h2><h3 id="Entity-实体-relationship-model"><a href="#Entity-实体-relationship-model" class="headerlink" title="Entity(实体)relationship model"></a>Entity(实体)relationship model</h3><ul>
+<li>phase 1: Requirement analysis<ul>
+<li>what users(apps) expects from the database</li>
+</ul>
+</li>
+<li>phase 2: conceptual database design: how the database look like<ul>
+<li>build ER(entity relationship) diagram</li>
+</ul>
+</li>
+<li>Phase 3: logical database design<ul>
+<li>convert ER design into a relational database schema</li>
+</ul>
+</li>
+</ul>
+<h4 id="phase-2"><a href="#phase-2" class="headerlink" title="phase 2:"></a>phase 2:</h4><p>entity represents objects in the real world, like bank account, users…<br><img src="https://i.imgur.com/QazKV94.png"></p>
+<h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2><h2 id="Spatial-Database"><a href="#Spatial-Database" class="headerlink" title="Spatial Database"></a>Spatial Database</h2><h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>]]></content>
       <categories>
         <category>processing data in scale</category>
       </categories>
