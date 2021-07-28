@@ -1616,7 +1616,27 @@
 </li>
 </ul>
 <h4 id="phase-2"><a href="#phase-2" class="headerlink" title="phase 2:"></a>phase 2:</h4><p>entity represents objects in the real world, like bank account, users…<br><img src="https://i.imgur.com/QazKV94.png"></p>
-<h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2><h2 id="Spatial-Database"><a href="#Spatial-Database" class="headerlink" title="Spatial Database"></a>Spatial Database</h2><h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>]]></content>
+<h2 id="Relational-Model-and-Relational-Algebra"><a href="#Relational-Model-and-Relational-Algebra" class="headerlink" title="Relational Model and Relational Algebra"></a>Relational Model and Relational Algebra</h2><h3 id="relational-data-model"><a href="#relational-data-model" class="headerlink" title="relational data model"></a>relational data model</h3><p>each column has the attribute.<br>Query Language:</p>
+<ul>
+<li>procedural/imperative language:<ul>
+<li>instructs the system to perform a sequence of operators to compute a result.</li>
+<li>relational algebra</li>
+</ul>
+</li>
+<li>Non-Procedural/Declarative Language<ul>
+<li>Tells what data is to be retrieved(检索) but does not tell the system how to retrieve the data</li>
+<li>relational calculus.</li>
+<li>SQL.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Relational-Algebra"><a href="#Relational-Algebra" class="headerlink" title="Relational Algebra"></a>Relational Algebra</h3><p><img src="https://i.imgur.com/cVbNgLD.png"><br>An Example:<br><img src="https://i.imgur.com/8yaRqO7.png"><br>Union: easy to understand, relation -&gt; relation<br>Difference: easy as well, relation -&gt; relation<br>Cartesian Product:<br><img src="https://i.imgur.com/VcU0Aap.png"><br><img src="https://i.imgur.com/vrlXYcQ.png"><br>好像是一个叫mergegrid的语法？（不是不mergegird我忘记了)。<br>Selection: filter out everything except the SR students.<br>Projection<br>just return specify columns(attributes)<br>like filter out the third column<br><img src="https://i.imgur.com/032CTta.png"><br>Intersection<br><img src="https://i.imgur.com/6UtYfnK.png"><br>$\theta$-join<br><img src="https://i.imgur.com/qiLyN7b.png"></p>
+<ol>
+<li>find the same name for two table</li>
+<li>combine these tuples.<h2 id="Introduction-to-SQL-Query-Language"><a href="#Introduction-to-SQL-Query-Language" class="headerlink" title="Introduction to SQL Query Language"></a>Introduction to SQL Query Language</h2></li>
+</ol>
+<h2 id="Spatial-Database-空间数据库，但是为啥叫空间数据库？）"><a href="#Spatial-Database-空间数据库，但是为啥叫空间数据库？）" class="headerlink" title="Spatial Database(空间数据库，但是为啥叫空间数据库？）"></a>Spatial Database(空间数据库，但是为啥叫空间数据库？）</h2><p>spatial data is mobile devices “footprints” data</p>
+<h2 id="Project-Milestone-1"><a href="#Project-Milestone-1" class="headerlink" title="Project Milestone 1"></a>Project Milestone 1</h2><h2 id="Week-1-Quiz"><a href="#Week-1-Quiz" class="headerlink" title="Week 1 Quiz"></a>Week 1 Quiz</h2>]]></content>
       <categories>
         <category>processing data in scale</category>
       </categories>
@@ -1662,5 +1682,140 @@
       <tags>
         <tag>programming💻</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>English Log</title>
+    <url>/2021/05/22/English-Log/</url>
+    <content><![CDATA[<p>马上要读研了，想要提高英语</p>
+<span id="more"></span>
+<p>2021-5-22的词汇量测试，可以说很垃圾了。</p>
+<p><img src="https://i.imgur.com/syh9lxu.png" alt="Screen Shot 2021-05-22 at 3.40.19 PM"></p>
+<p><img src="https://i.imgur.com/NyIspEV.png"></p>
+<p>计划：</p>
+<ol>
+<li>词汇：每天早上起床6:30，吃完饭7：00，背托福45天突破，预计一小时：8：30。每天100个，计划一个月背完。然后再测试词汇。</li>
+<li>运动一个小时：9:30.</li>
+<li>洗澡喂猪，再吃一点东西：10:30.</li>
+<li>11点以后的时间：<ol>
+<li>如果上班：<ul>
+<li>读论文，记下来10个句子，自己翻译或者机器翻译，背下来。</li>
+<li>下班把学到的句子默写到blog里面。</li>
+</ul>
+</li>
+<li>如果不上班：学511的课程，不读论文也不默写。</li>
+</ol>
+</li>
+<li>背一篇新概念2的文章。</li>
+</ol>
+<p>从5月22日开始吧,先坚持一个月。</p>
+<h3 id="2021年5月22日："><a href="#2021年5月22日：" class="headerlink" title="2021年5月22日："></a>2021年5月22日：</h3><h3 id="2021年6月22日："><a href="#2021年6月22日：" class="headerlink" title="2021年6月22日："></a>2021年6月22日：</h3><p>新的词汇量测试：</p>
+]]></content>
+      <tags>
+        <tag>English</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript Getting Start</title>
+    <url>/2021/07/15/JavaScript-Getting-Start/</url>
+    <content><![CDATA[<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>JavaScript 是一种多范式的动态语言，它包含类型、运算符、标准内置（ built-in）对象和方法。它的语法来源于 Java 和 C，所以这两种语言的许多语法特性同样适用于 JavaScript。JavaScript 通过原型链而不是类来支持面向对象编程（有关 ES6 类的内容参考这里Classes，有关对象原型参考见此继承与原型链）。JavaScript同样支持函数式编程——因为它们也是对象，函数也可以被保存在变量中，并且像其他对象一样被传递。</p>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><p>JS 没有整数(Int), 一个看上去是整数的东西，其实都是浮点数。小心，有时会出现这种情况：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> = <span class="number">0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+<p>支持标准运算符和内置的<code>Math</code>对象：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sin(<span class="number">3.5</span>);</span><br><span class="line"><span class="keyword">var</span> circumference = <span class="number">2</span> * <span class="built_in">Math</span>.PI * r;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;123&quot;</span>, <span class="number">10</span>); <span class="comment">// 123</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;010&quot;</span>, <span class="number">10</span>); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;010&quot;</span>);  <span class="comment">//  8</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;0x10&quot;</span>); <span class="comment">// 16</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;11&quot;</span>, <span class="number">2</span>); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">+ <span class="string">&quot;42&quot;</span>;   <span class="comment">// 42</span></span><br><span class="line">+ <span class="string">&quot;010&quot;</span>;  <span class="comment">// 10</span></span><br><span class="line">+ <span class="string">&quot;0x10&quot;</span>; <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>String</li>
+<li>Boolean</li>
+<li>Function</li>
+<li>Object<ul>
+<li>Function</li>
+<li>Array</li>
+<li>Data</li>
+<li>RegExp</li>
+</ul>
+</li>
+<li>Symbol</li>
+<li>null</li>
+<li>Undefined</li>
+</ol>
+<p>rg2 = sqrt(x ^2 + y ^2 ) ^ 2<br>rg4 = sqrt(x ^2 + y ^2 ) ^ 4<br>rg4 = sqrt(x ^2 + y ^2 ) ^ 6</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rg_2 = np.mean((x - np.mean(x)) ** <span class="number">2</span> + (y - np.mean(y)) ** <span class="number">2</span>)</span><br><span class="line">rg_2 = np.mean((x - np.mean(x)) ** <span class="number">4</span> + (y - np.mean(y)) ** <span class="number">4</span>)</span><br><span class="line">x_cm = <span class="number">1</span></span><br><span class="line">y_cm = <span class="number">2</span></span><br><span class="line">x = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">y = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] - &gt; [<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>]</span><br><span class="line">[-<span class="number">1</span>, <span class="number">1</span>,<span class="number">2</span>] - &gt; [<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">4</span>,<span class="number">13</span>]</span><br><span class="line">rg2 = <span class="number">18</span> /<span class="number">3</span> = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">sqrt(x - x_&#123;cm&#125; ^ <span class="number">2</span> + y- y_&#123;cm&#125; ^ <span class="number">2</span> ) ^ <span class="number">4</span> = |R - R_&#123;cm&#125;|^<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculateWinner</span>(<span class="params">squares</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> lines = [</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">    [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">    [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">3</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>],</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; lines.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> [a, b, c] = lines[i];</span><br><span class="line">    <span class="keyword">if</span> (squares[a] &amp;&amp; squares[a] === squares[b] &amp;&amp; squares[a] === squares[c]) &#123;</span><br><span class="line">      <span class="keyword">return</span> squares[a];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>print in console:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">&gt;&gt;&gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>let</code> and <code>var</code>:<br><code>let</code>允许你声明一个作用域被限制在<code>block</code>级中的变量、语句或者表达式, <code>var</code>声明的变量的作用域是整个封闭函数。<br>For example:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">varTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">2</span>;  <span class="comment">// 这个作用域的变量影响整个封闭函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(x);  <span class="comment">// 2</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x);  <span class="comment">// 2， 所以这里的output依旧是2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">letTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> x = <span class="number">2</span>;  <span class="comment">// 只在这个block中有效</span></span><br><span class="line">    <span class="built_in">console</span>.log(x);  <span class="comment">// 2</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x);  <span class="comment">// 1 他会找他的block中的数值，就是1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>const</code></p>
+<ol>
+<li>常量要求一个初始值， 在声明的时候可以使用大小写，但通常情况下全部用大写字母。</li>
+<li>常量可以定义成对象和数组</li>
+<li>常量不可以更新</li>
+<li>常量作用在全局</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义常量MY_FAV并赋值7</span></span><br><span class="line"><span class="keyword">const</span> MY_FAV = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 报错 - Uncaught TypeError: Assignment to constant variable.</span></span><br><span class="line">MY_FAV = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MY_FAV is 7</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;my favorite number is: &#x27;</span> + MY_FAV);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试重新声明会报错</span></span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Identifier &#x27;MY_FAV&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> MY_FAV = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MY_FAV 保留给上面的常量，这个操作会失败</span></span><br><span class="line"><span class="keyword">var</span> MY_FAV = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也会报错</span></span><br><span class="line"><span class="keyword">let</span> MY_FAV = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (MY_FAV === <span class="number">7</span>) &#123;</span><br><span class="line">  <span class="comment">// 没问题，并且创建了一个块作用域变量 MY_FAV</span></span><br><span class="line">  <span class="comment">// (works equally well with let to declare a block scoped non const variable)</span></span><br><span class="line">  <span class="keyword">let</span> MY_FAV = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// MY_FAV 现在为 20</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;my favorite number is &#x27;</span> + MY_FAV);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这被提升到全局上下文并引发错误</span></span><br><span class="line">  <span class="keyword">var</span> MY_FAV = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MY_FAV 依旧为7</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;my favorite number is &#x27;</span> + MY_FAV);</span><br></pre></td></tr></table></figure>
+
+<p>如果你想写的组件只包含一个 render 方法，并且不包含 state，那么使用函数组件就会更简单。我们不需要定义一个继承于 React.Component 的类，我们可以定义一个函数，这个函数接收 props 作为参数，然后返回需要渲染的元素。函数组件写起来并不像 class 组件那么繁琐，很多组件都可以使用函数组件来写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//这里并没有继承React.Component class</span></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;。<span class="comment">//只有一个render</span></span><br><span class="line">    <span class="keyword">return</span> ( </span><br><span class="line">      &lt;button</span><br><span class="line">        className=<span class="string">&quot;square&quot;</span></span><br><span class="line">        onClick=&#123;<span class="function">() =&gt;</span> <span class="built_in">this</span>.props.onClick()&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;<span class="built_in">this</span>.props.value&#125;</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Square</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;button className=<span class="string">&quot;square&quot;</span> onClick=&#123;props.onClick&#125;&gt;</span><br><span class="line">      &#123;props.value&#125;</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析这个class：</p>
+<ol>
+<li>向 <code>DOM</code> 内置元素 <code>&lt;button&gt;</code> 添加 <code>onClick</code> prop，让 React 开启对点击事件的监听。</li>
+<li>button被点击，<code>React</code> 会调用 <code>Square</code> 组件的 <code>render()</code> 方法中的 <code>onClick</code> 事件处理函数。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>gesture project</title>
+    <url>/2021/07/18/gesture-project/</url>
+    <content><![CDATA[<h2 id="配置react-native-local-environment"><a href="#配置react-native-local-environment" class="headerlink" title="配置react native local environment"></a>配置react native local environment</h2><p>install <code>node</code>, <code>watchman</code>, <code>yarn</code>, <code>cocoapads</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install node  </span><br><span class="line">v14.16.0</span><br><span class="line">brew install watchman</span><br><span class="line">2021.06.07.00</span><br><span class="line">npm install -g yran</span><br><span class="line">1.22.10</span><br><span class="line">brew install cocoapods</span><br></pre></td></tr></table></figure>
+<p>初始化一个项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npx react-native init GestureRec</span><br><span class="line">yran ios</span><br></pre></td></tr></table></figure>
+<p>之后虚拟机打开<br><img src="https://i.imgur.com/GwUew0i.png"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>moments of the radius of gyration</title>
+    <url>/2021/06/22/moments-of-the-radies-of-gyration/</url>
+    <content><![CDATA[<p>In polymer physics, the radius if gyration is used to describe the dimensions of a polymer chain. The radius of gyration of a particular molecule at a given time is defined as:<br>$$R^{2}<em>{g} = \dfrac{1}{N}\sum^{N}</em>{k = 1}(r_{k} - r_{mean})^{2}$$</p>
+<p>where $r_{mean}$ is the mean position of the monomers. </p>
+<p>first I need to calculate the $r_{mean}$. Based on my understanding, the centre of a polymer is the centre of mass. Since the masses of all monomers are same, and the position of monomers are given by x,y coordinate. </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_centre = np.mean(x)</span><br><span class="line">y_centre = np.mean(y)</span><br><span class="line"><span class="comment"># where x and y are 2 numpy arrays, </span></span><br><span class="line"><span class="comment"># contain horizontal and vertical components of monomers.</span></span><br></pre></td></tr></table></figure>
+<p>according to above definition, the $R^{2}_{g}$ can be calculated by:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rg2 = np.mean ((x - x_centre) ** <span class="number">2</span> + (y y_centre) ** <span class="number">2</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>physics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Workout Record</title>
+    <url>/2021/07/18/workout-record/</url>
+    <content><![CDATA[<h2 id="第一阶段概述："><a href="#第一阶段概述：" class="headerlink" title="第一阶段概述："></a>第一阶段概述：</h2><p>开始的时候神经的募集能力不足，导致力量也不足。做起动作容易摇摇晃晃，所以我打算第一阶段主要练习动作的熟练度，这一阶段是2个月，从7月中旬到九月中旬。主要要做的是</p>
+<ol>
+<li>不过多的追求重量，但要保持动作的完整度。</li>
+<li>尽量多学一点健身相关的知识，the more you know, the more you grow.</li>
+<li>做复合动作，比如batch press，pull down or pull up. 尤其不要忽视leg day。分泌的乳酸越多就代表分泌的睾酮越多。在做深蹲的时候，全身一半的肌肉都在参与，自然就会分泌更多的激素，这对全身的肌肉生长都是有利的。</li>
+<li>不要换动作，神经适应的时间是4到8周，我运动天赋很好应该5周左右（可以回来看看），之后才是肌肉快速增长期。所以保持复合动作，一直练，先增长力量。<h3 id="7月"><a href="#7月" class="headerlink" title="7月"></a>7月</h3><h4 id="2021-7-18"><a href="#2021-7-18" class="headerlink" title="2021-7-18"></a>2021-7-18</h4>第一次去Goodlife，啥也不懂随便拉了两个大佬问问，然后把器械都玩了一遍，感觉自己挺蠢的。<br>有几个小问题：</li>
+<li>重量还是次数：bench push开始25公斤可以做8下，但是后来就不行了，应该减重量吗？不应该，做到力竭就行。</li>
+<li>开始摇摇晃晃正常。肌肉力量不足控制能力也不足，慢慢来就好了。所以不要经常换动作，身体要先记住动作才可以进步，这个时期大概是8周，这8周增重效果不是很好但是力量会进步很快。</li>
+<li>以后早上8点去，人少，不耽误上班。</li>
+<li>真没啥尴尬的，练就完事了</li>
+</ol>
+<h4 id="2021-07-19"><a href="#2021-07-19" class="headerlink" title="2021-07-19"></a>2021-07-19</h4><p>今天10点去的，主要是背和二头<br>首先有一个感觉，就是没练到什么东西只是身上很痛，那应该还是练到了。<br>以后这天就不做专门练二头的动作，引体向上做不上去就借70或者90磅去做，然后做高位下拉，自然而然的就练到二头了，没必要，也还没到专门练的地步，注意斜方肌不要受伤。<br>热身5分钟<br>以后就引体向上7 * 5 （15分钟）<br>高位下拉8 * 5 （15分钟）<br>哑铃划船8 * 5 （15分钟）<br>拉伸10分钟<br>回家<br>明天练腿，期待，想练腿。<br>另外蛋白质补充：<br>每天需要 1.6 * 60 = 100g蛋白质。<br>每个鸡蛋6g，每天可以吃五个鸡蛋，30g。<br>一勺蛋白粉，37g<br>不管什么肉大概250g, 50g<br>牛奶7g<br>一共 30 + 37 + 50 + 7.5 = 124，绝对够了<br>一顿米饭，一顿面包<br>西兰花，香蕉+水果<br>多喝水</p>
+<h4 id="2021-07-20"><a href="#2021-07-20" class="headerlink" title="2021-07-20"></a>2021-07-20</h4><p><img src="https://i.imgur.com/HG4CVZ3.jpg" alt="IMG_1906"></p>
+<h4 id="2021-07-21"><a href="#2021-07-21" class="headerlink" title="2021-07-21"></a>2021-07-21</h4><p>没练</p>
+<h4 id="2021-07-22"><a href="#2021-07-22" class="headerlink" title="2021-07-22"></a>2021-07-22</h4><p>没练</p>
+<h4 id="2021-07-23"><a href="#2021-07-23" class="headerlink" title="2021-07-23"></a>2021-07-23</h4><p>没练</p>
+<h4 id="2021-07-24"><a href="#2021-07-24" class="headerlink" title="2021-07-24"></a>2021-07-24</h4><p>出来玩没练</p>
+<h4 id="2021-07-25"><a href="#2021-07-25" class="headerlink" title="2021-07-25"></a>2021-07-25</h4><p>没练，废物</p>
+<h4 id="2021-07-26"><a href="#2021-07-26" class="headerlink" title="2021-07-26"></a>2021-07-26</h4><p>今天8点去的，感觉不错。昨天因为心情不好没吃饭，好好吃好好睡，下次应该还有提高。<br><img src="https://i.imgur.com/bdUJoQK.jpg" alt="IMG_1905"><br>注意肩膀向后收，然后每一次都做到力竭，不要骗自己。另外腹肌是不是可以天天练？</p>
+<h4 id="2021-07-27"><a href="#2021-07-27" class="headerlink" title="2021-07-27"></a>2021-07-27</h4><p><img src="https://i.imgur.com/duMePGc.jpg" alt="IMG_1912"></p>
+<h4 id="2021-07-28"><a href="#2021-07-28" class="headerlink" title="2021-07-28"></a>2021-07-28</h4><h4 id="2021-07-29"><a href="#2021-07-29" class="headerlink" title="2021-07-29"></a>2021-07-29</h4><h4 id="2021-07-30"><a href="#2021-07-30" class="headerlink" title="2021-07-30"></a>2021-07-30</h4><h4 id="2021-07-31"><a href="#2021-07-31" class="headerlink" title="2021-07-31"></a>2021-07-31</h4><p>休息</p>
+]]></content>
   </entry>
 </search>
